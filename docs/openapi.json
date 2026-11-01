@@ -1521,6 +1521,25 @@
           }
         }
       }
+    },
+    "/api/catalogos": {
+      "get": {
+        "tags": [
+          "Sistema"
+        ],
+        "summary": "Listas para llenar los formularios del frontend",
+        "operationId": "catalogos_api_catalogos_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

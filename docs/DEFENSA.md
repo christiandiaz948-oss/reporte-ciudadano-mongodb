@@ -7,7 +7,7 @@ puntualmente y mostrar la base de datos y la API funcionando.
 
 - [ ] Servicio de MongoDB corriendo; Compass abierto en la base `reporte_ciudadano`.
 - [ ] `python -m scripts.seed` ejecutado ese mismo día, para que las fechas sean recientes.
-- [ ] `uvicorn app.main:app` corriendo y <http://localhost:8000/docs> abierto.
+- [ ] `uvicorn app.main:app` corriendo, con <http://localhost:8000> (página) y <http://localhost:8000/docs> (Swagger) abiertos.
 - [ ] [`consultas_demo.mongodb.js`](consultas_demo.mongodb.js) abierto para copiar consultas al shell de Compass.
 - [ ] Un `ciudadanoId` y un folio de prueba copiados en un bloc de notas, para no buscarlos en vivo.
 - [ ] Un ensayo completo con cronómetro.
@@ -18,7 +18,7 @@ puntualmente y mostrar la base de datos y la API funcionando.
 |---|---|---|
 | 0–2 | Integrante 1 | Qué problema resuelve el sistema y **por qué MongoDB** (respuesta corta, abajo) |
 | 2–6 | Integrante 1 | **Modelo** en Compass: abrir un reporte y explicar qué se embebió y qué se referenció. Pestaña *Validation*: mostrar el `$jsonSchema` e insertar un documento inválido para que se vea el rechazo |
-| 6–10 | Integrante 2 | **API en Swagger:** crear un reporte (se asigna solo a la alcaldía), apoyarlo, intentar apoyarlo otra vez (409), llevarlo hasta "resuelto" e intentar un cambio no permitido (409) |
+| 6–10 | Integrante 2 | **Aplicación web** (`http://localhost:8000`): crear un reporte (se asigna solo a la alcaldía) y buscarlo en Compass para mostrar el documento. Apoyarlo, intentar apoyarlo otra vez (error), llevarlo hasta "resuelto". Abrir Swagger un momento para mostrar que la página usa esa misma API |
 | 10–13 | Integrante 3 | **Consultas:** `GET /reportes` con varios filtros (`abiertos`, `categoria`, `urgentes`). **Agregaciones:** `/analitica/tiempos-resolucion` (explicar `$lookup` + `$unwind`) y `/analitica/por-categoria` |
 | 13–15 | Todos | Escalabilidad (shard key) y preguntas |
 

@@ -1,9 +1,15 @@
+from pathlib import Path
+
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pymongo.errors import PyMongoError, WriteError
 
+from app.catalogos import CATEGORIAS, DEPARTAMENTOS, ESTADOS, PRIORIDADES, TRANSICIONES
 from app.db import db
 from app.routers import analitica, ciudadanos, instituciones, reportes
+
+CARPETA_FRONTEND = Path(__file__).resolve().parent.parent / "frontend"
 
 app = FastAPI(
     title="Sistema de Reporte Ciudadano",
@@ -37,11 +43,6 @@ def error_mongo(_: Request, exc: PyMongoError):
     return JSONResponse(status_code=503, content={"detail": f"Error de base de datos: {exc}"})
 
 
-@app.get("/", include_in_schema=False)
-def inicio():
-    return RedirectResponse("/docs")
-
-
 @app.get("/api/salud", tags=["Sistema"], summary="Verifica conexión con MongoDB")
 def salud():
     db.command("ping")
@@ -50,3 +51,19 @@ def salud():
         "baseDatos": db.name,
         "colecciones": {c: db[c].estimated_document_count() for c in ("ciudadanos", "instituciones", "reportes")},
     }
+
+
+@app.get("/api/catalogos", tags=["Sistema"], summary="Listas para llenar los formularios del frontend")
+def catalogos():
+    return {
+        "categorias": CATEGORIAS,
+        "prioridades": PRIORIDADES,
+        "estados": ESTADOS,
+        "transiciones": TRANSICIONES,
+        "departamentos": {nombre: info["municipios"] for nombre, info in DEPARTAMENTOS.items()},
+    }
+
+
+# El frontend (carpeta frontend/) se sirve en la raíz: http://localhost:8000
+# Va al final para que las rutas /api y /docs tengan prioridad.
+app.mount("/", StaticFiles(directory=CARPETA_FRONTEND, html=True), name="frontend")

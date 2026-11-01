@@ -23,6 +23,7 @@ municipios con más problemas abiertos, reportes por categoría y etiquetas más
 |---|---|
 | Base de datos | MongoDB 7 (Community Server) |
 | API | Python 3.11+ con FastAPI y PyMongo |
+| Frontend | HTML, CSS y JavaScript (sin frameworks), servido por la misma API |
 | Documentación de la API | Swagger / OpenAPI, generada automáticamente en `/docs` |
 
 ## Requisitos
@@ -56,6 +57,7 @@ uvicorn app.main:app --reload
 En Linux o macOS se activa el entorno con `source venv/bin/activate` y se copia el archivo con `cp .env.example .env`.
 
 Después de levantar la API:
+- **Aplicación web:** <http://localhost:8000> (listado, registro de ciudadanos y reportes, detalle y métricas)
 - **Swagger UI:** <http://localhost:8000/docs> (probar todos los endpoints desde el navegador)
 - **ReDoc:** <http://localhost:8000/redoc>
 - **OpenAPI para Postman o Insomnia:** importar [`docs/openapi.json`](docs/openapi.json) o la URL `http://localhost:8000/openapi.json`
@@ -126,6 +128,10 @@ app/
   schemas.py         # validación de entrada (Pydantic)
   servicios.py       # asignación de institución y folio
   routers/           # ciudadanos, instituciones, reportes, analitica
+frontend/
+  index.html         # las 4 pantallas: reportes, detalle, registrar y métricas
+  app.js             # llama a la API con fetch() y dibuja los datos
+  estilos.css        # estilos
 scripts/
   init_db.py         # colecciones con $jsonSchema + índices (idempotente)
   seed.py            # carga de datos de prueba

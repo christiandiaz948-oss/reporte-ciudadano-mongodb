@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte Ciudadano</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Reporte Ciudadano</h1>
+    <nav>
+      <a href="#reportes">Reportes</a>
+      <a href="#registrar">Registrar</a>
+      <a href="#metricas">Métricas</a>
+      <a href="/docs" target="_blank">API (Swagger)</a>
+    </nav>
+  </header>
+
+  <div id="mensaje" class="mensaje oculto"></div>
+
+  <main>
+    <!-- ===================== LISTADO DE REPORTES ===================== -->
+    <section id="vista-reportes" class="vista">
+      <h2>Reportes</h2>
+      <form id="form-filtros" class="filtros">
+        <label>Estado
+          <select name="estado"><option value="">Todos</option></select>
+        </label>
+        <label>Categoría
+          <select name="categoria"><option value="">Todas</option></select>
+        </label>
+        <label>Departamento
+          <select name="departamento"><option value="">Todos</option></select>
+        </label>
+        <label>Título contiene
+          <input name="titulo" placeholder="ej. semáforo">
+        </label>
+        <label>Ordenar por
+          <select name="orden">
+            <option value="fechaCreacion">Más recientes</option>
+            <option value="totalApoyos">Más apoyados</option>
+            <option value="nivelPrioridad">Prioridad</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" name="abiertos"> Solo abiertos</label>
+        <label class="check"><input type="checkbox" name="urgentes"> Urgentes</label>
+        <button type="submit">Buscar</button>
+      </form>
+
+      <p id="total-reportes" class="ayuda"></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Folio</th><th>Título</th><th>Categoría</th><th>Prioridad</th>
+            <th>Estado</th><th>Municipio</th><th>Institución</th><th>Apoyos</th><th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reportes"></tbody>
+      </table>
+      <div class="paginacion">
+        <button id="btn-anterior">« Anterior</button>
+        <span id="texto-pagina"></span>
+        <button id="btn-siguiente">Siguiente »</button>
+      </div>
+    </section>
+
+    <!-- ===================== DETALLE DE UN REPORTE ===================== -->
+    <section id="vista-detalle" class="vista">
+      <a href="#reportes">« Volver a reportes</a>
+      <div id="detalle-contenido"></div>
+
+      <div class="columnas">
+        <form id="form-estado" class="tarjeta">
+          <h3>Cambiar estado</h3>
+          <label>Nuevo estado <select name="estado" required></select></label>
+          <label>Actor <input name="actor" required placeholder="ej. Operador Alcaldía"></label>
+          <label>Comentario <input name="comentario"></label>
+          <button type="submit">Guardar estado</button>
+        </form>
+
+        <form id="form-apoyo" class="tarjeta">
+          <h3>Apoyar reporte</h3>
+          <label>Ciudadano <select name="ciudadanoId" class="lista-ciudadanos" required></select></label>
+          <button type="submit">Apoyar</button>
+        </form>
+
+        <form id="form-calificacion" class="tarjeta">
+          <h3>Calificar atención</h3>
+          <p class="ayuda">Solo el autor, cuando el reporte está resuelto.</p>
+          <label>Puntaje
+            <select name="puntaje">
+              <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+            </select>
+          </label>
+          <label>Comentario <input name="comentario"></label>
+          <button type="submit">Calificar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== FORMULARIOS DE REGISTRO ===================== -->
+    <section id="vista-registrar" class="vista">
+      <h2>Registrar</h2>
+      <div class="columnas">
+        <form id="form-reporte" class="tarjeta">
+          <h3>Nuevo reporte</h3>
+          <label>Ciudadano que reporta <select name="ciudadanoId" class="lista-ciudadanos" required></select></label>
+          <label>Título <input name="titulo" required minlength="5" maxlength="120"></label>
+          <label>Descripción <textarea name="descripcion" required minlength="10" rows="3"></textarea></label>
+          <label>Categoría <select name="categoria" required></select></label>
+          <label>Prioridad <select name="prioridad" required></select></label>
+          <label>Departamento <select name="departamento" class="sel-departamento" required></select></label>
+          <label>Municipio <select name="municipio" class="sel-municipio" required></select></label>
+          <div class="fila">
+            <label>Latitud <input name="latitud" type="number" step="any" value="13.6989" required></label>
+            <label>Longitud <input name="longitud" type="number" step="any" value="-89.1914" required></label>
+          </div>
+          <label>Referencia <input name="referencia" placeholder="ej. frente a la escuela"></label>
+          <label>Etiquetas (separadas por coma) <input name="etiquetas" placeholder="peligro, escuela"></label>
+          <label>URL de foto (opcional) <input name="foto" type="url" placeholder="https://..."></label>
+          <button type="submit">Crear reporte</button>
+        </form>
+
+        <form id="form-ciudadano" class="tarjeta">
+          <h3>Nuevo ciudadano</h3>
+          <label>DUI <input name="dui" required pattern="[0-9]{8}-[0-9]" placeholder="00000000-0"></label>
+          <label>Nombre completo <input name="nombre" required minlength="3"></label>
+          <label>Correo <input name="email" type="email" required></label>
+          <label>Teléfono <input name="telefono" pattern="[267][0-9]{3}-[0-9]{4}" placeholder="7000-0000"></label>
+          <label>Departamento <select name="departamento" class="sel-departamento" required></select></label>
+          <label>Municipio <select name="municipio" class="sel-municipio" required></select></label>
+          <label>Colonia <input name="colonia"></label>
+          <button type="submit">Registrar ciudadano</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== MÉTRICAS ===================== -->
+    <section id="vista-metricas" class="vista">
+      <h2>Métricas</h2>
+      <p class="ayuda">Cada tabla viene de un Aggregation Pipeline en MongoDB.</p>
+      <div class="columnas">
+        <div class="tarjeta">
+          <h3>Reportes por categoría</h3>
+          <div id="metrica-categorias"></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Municipios con más reportes abiertos</h3>
+          <div id="metrica-municipios"></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Días promedio de resolución por institución</h3>
+          <div id="metrica-tiempos"></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Etiquetas más frecuentes (abiertos)</h3>
+          <div id="metrica-etiquetas"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
