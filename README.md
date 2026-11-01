@@ -82,9 +82,19 @@ Después de levantar la API:
 
 Los datos son ficticios. Se generan con una semilla fija, así que cada carga produce los mismos datos.
 
+### Script de base de datos (MongoDB)
+
+[`datos/script_bd_reporte_ciudadano.mongodb.js`](datos/script_bd_reporte_ciudadano.mongodb.js) crea **todo en un solo paso**:
+la base, las colecciones con su `$jsonSchema`, los índices y los datos de prueba. Se puede ejecutar de dos formas:
+
+- **Compass:** abrir la pestaña **_MONGOSH**, pegar todo el archivo y presionar Enter.
+- **Terminal:** `mongosh datos/script_bd_reporte_ciudadano.mongodb.js`
+
+Al final muestra cuántos documentos quedaron en cada colección. Si la base ya existe, la borra y la vuelve a crear.
+
 ### Opción manual: crear la base desde MongoDB Compass
 
-En lugar de `python -m scripts.seed`, la base también se puede crear a mano con los archivos de la carpeta `datos/`:
+La base también se puede crear por partes con los demás archivos de la carpeta `datos/`:
 
 1. Abrir Compass y conectarse a `mongodb://localhost:27017`.
 2. **Colecciones, validaciones e índices:** abrir la pestaña **_MONGOSH** (abajo), pegar todo el contenido de
@@ -155,6 +165,7 @@ scripts/
   init_db.py         # colecciones con $jsonSchema + índices (idempotente)
   seed.py            # carga de datos de prueba
 datos/
+  script_bd_reporte_ciudadano.mongodb.js  # script completo: estructura + índices + datos
   crear_bd.mongodb.js        # crea colecciones con $jsonSchema e índices (pegar en mongosh de Compass)
   validaciones/              # $jsonSchema de cada colección (pestaña Validation de Compass)
   *.json                     # documentos para Import JSON en Compass
