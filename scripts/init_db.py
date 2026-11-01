@@ -1,40 +1,40 @@
-"""Crea las colecciones con reglas $jsonSchema y sus índices.
+"""Crea las colecciones con reglas de validación ($jsonSchema) y sus índices.
 
-Es idempotente: si la colección ya existe, actualiza el validador con collMod.
+Se puede ejecutar varias veces: si la colección ya existe, solo actualiza la validación (collMod).
 Uso:  python -m scripts.init_db
 """
-from pymongo import ASCENDING, DESCENDING, GEOSPHERE, TEXT
+from pymongo import ASCENDING, DESCENDING
 from pymongo.errors import CollectionInvalid
 
 from app.catalogos import (CATEGORIAS, ESTADOS, LAT_MAX, LAT_MIN, LNG_MAX, LNG_MIN,
                            PRIORIDADES, TIPOS_EVIDENCIA, TIPOS_INSTITUCION)
 from app.db import db
 
+# Python guarda los números enteros como "int" o "long" según su tamaño
 ENTERO = ["int", "long"]
-TEXTO_OPCIONAL = ["string", "null"]
 
 VALIDADOR_CIUDADANOS = {
     "$jsonSchema": {
         "bsonType": "object",
-        "title": "Ciudadano que reporta problemas",
         "required": ["dui", "nombre", "email", "direccion", "fechaRegistro", "estadisticas"],
         "properties": {
             "dui": {"bsonType": "string", "pattern": "^[0-9]{8}-[0-9]$",
                     "description": "DUI con formato 00000000-0"},
             "nombre": {"bsonType": "string", "minLength": 3, "maxLength": 100},
-            "email": {"bsonType": "string", "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"},
-            "telefono": {"bsonType": TEXTO_OPCIONAL, "pattern": "^[267][0-9]{3}-[0-9]{4}$"},
+            "email": {"bsonType": "string", "pattern": "^[^@ ]+@[^@ ]+\\.[^@ ]+$"},
+            "telefono": {"bsonType": ["string", "null"], "pattern": "^[267][0-9]{3}-[0-9]{4}$"},
+            # Subdocumento embebido
             "direccion": {
                 "bsonType": "object",
                 "required": ["departamento", "municipio"],
                 "properties": {
                     "departamento": {"bsonType": "string"},
                     "municipio": {"bsonType": "string"},
-                    "colonia": {"bsonType": TEXTO_OPCIONAL},
+                    "colonia": {"bsonType": ["string", "null"]},
                 },
             },
             "fechaRegistro": {"bsonType": "date"},
-            # Patrón Computed: contadores precalculados para no recontar en cada lectura
+            # Contadores guardados para no tener que contar los reportes cada vez
             "estadisticas": {
                 "bsonType": "object",
                 "required": ["totalReportes"],
@@ -50,14 +50,13 @@ VALIDADOR_CIUDADANOS = {
 VALIDADOR_INSTITUCIONES = {
     "$jsonSchema": {
         "bsonType": "object",
-        "title": "Institución que atiende reportes",
         "required": ["codigo", "nombre", "tipo", "categoriasAtendidas", "cobertura", "activa"],
         "properties": {
             "codigo": {"bsonType": "string", "minLength": 2, "maxLength": 40},
             "nombre": {"bsonType": "string", "minLength": 3, "maxLength": 150},
             "tipo": {"enum": TIPOS_INSTITUCION},
             "categoriasAtendidas": {
-                "bsonType": "array", "minItems": 1, "uniqueItems": True,
+                "bsonType": "array", "minItems": 1,
                 "items": {"enum": CATEGORIAS},
             },
             "cobertura": {
@@ -69,13 +68,7 @@ VALIDADOR_INSTITUCIONES = {
                     "municipios": {"bsonType": "array", "items": {"bsonType": "string"}},
                 },
             },
-            "contacto": {
-                "bsonType": ["object", "null"],
-                "properties": {
-                    "telefono": {"bsonType": TEXTO_OPCIONAL},
-                    "email": {"bsonType": TEXTO_OPCIONAL},
-                },
-            },
+            "contacto": {"bsonType": ["object", "null"]},
             "activa": {"bsonType": "bool"},
         },
     }
@@ -84,7 +77,6 @@ VALIDADOR_INSTITUCIONES = {
 VALIDADOR_REPORTES = {
     "$jsonSchema": {
         "bsonType": "object",
-        "title": "Reporte ciudadano",
         "required": ["folio", "titulo", "descripcion", "categoria", "prioridad", "nivelPrioridad",
                      "estado", "ubicacion", "direccion", "ciudadanoId", "historial", "apoyos",
                      "totalApoyos", "evidencias", "etiquetas", "fechaCreacion", "fechaActualizacion"],
@@ -96,19 +88,13 @@ VALIDADOR_REPORTES = {
             "prioridad": {"enum": PRIORIDADES},
             "nivelPrioridad": {"bsonType": ENTERO, "minimum": 1, "maximum": 4},
             "estado": {"enum": ESTADOS},
-            # GeoJSON Point: [longitud, latitud] dentro de El Salvador
+            # Coordenadas dentro de El Salvador
             "ubicacion": {
                 "bsonType": "object",
-                "required": ["type", "coordinates"],
+                "required": ["latitud", "longitud"],
                 "properties": {
-                    "type": {"enum": ["Point"]},
-                    "coordinates": {
-                        "bsonType": "array", "minItems": 2, "maxItems": 2,
-                        "items": [
-                            {"bsonType": "double", "minimum": LNG_MIN, "maximum": LNG_MAX},
-                            {"bsonType": "double", "minimum": LAT_MIN, "maximum": LAT_MAX},
-                        ],
-                    },
+                    "latitud": {"bsonType": "double", "minimum": LAT_MIN, "maximum": LAT_MAX},
+                    "longitud": {"bsonType": "double", "minimum": LNG_MIN, "maximum": LNG_MAX},
                 },
             },
             "direccion": {
@@ -117,12 +103,12 @@ VALIDADOR_REPORTES = {
                 "properties": {
                     "departamento": {"bsonType": "string"},
                     "municipio": {"bsonType": "string"},
-                    "referencia": {"bsonType": TEXTO_OPCIONAL, "maxLength": 200},
+                    "referencia": {"bsonType": ["string", "null"]},
                 },
             },
-            # Referencia: el ciudadano vive en su propia colección
+            # REFERENCIA: el ciudadano está en su propia colección
             "ciudadanoId": {"bsonType": "objectId"},
-            # Extended Reference: copia mínima de la institución asignada
+            # REFERENCIA EXTENDIDA: id + nombre de la institución, para no hacer $lookup al listar
             "institucion": {
                 "bsonType": ["object", "null"],
                 "required": ["_id", "codigo", "nombre"],
@@ -132,7 +118,7 @@ VALIDADOR_REPORTES = {
                     "nombre": {"bsonType": "string"},
                 },
             },
-            # Embebido y acotado: la bitácora siempre se lee junto con el reporte
+            # EMBEBIDO: la bitácora de cambios de estado
             "historial": {
                 "bsonType": "array", "minItems": 1, "maxItems": 50,
                 "items": {
@@ -142,10 +128,11 @@ VALIDADOR_REPORTES = {
                         "estado": {"enum": ESTADOS},
                         "fecha": {"bsonType": "date"},
                         "actor": {"bsonType": "string"},
-                        "comentario": {"bsonType": TEXTO_OPCIONAL},
+                        "comentario": {"bsonType": ["string", "null"]},
                     },
                 },
             },
+            # EMBEBIDO: máximo 10 evidencias (solo URLs, no archivos) por el límite de 16 MB
             "evidencias": {
                 "bsonType": "array", "maxItems": 10,
                 "items": {
@@ -158,7 +145,7 @@ VALIDADOR_REPORTES = {
                     },
                 },
             },
-            "apoyos": {"bsonType": "array", "uniqueItems": True, "items": {"bsonType": "objectId"}},
+            "apoyos": {"bsonType": "array", "items": {"bsonType": "objectId"}},
             "totalApoyos": {"bsonType": ENTERO, "minimum": 0},
             "etiquetas": {"bsonType": "array", "maxItems": 10, "items": {"bsonType": "string"}},
             "calificacion": {
@@ -166,7 +153,7 @@ VALIDADOR_REPORTES = {
                 "required": ["puntaje", "fecha"],
                 "properties": {
                     "puntaje": {"bsonType": ENTERO, "minimum": 1, "maximum": 5},
-                    "comentario": {"bsonType": TEXTO_OPCIONAL},
+                    "comentario": {"bsonType": ["string", "null"]},
                     "fecha": {"bsonType": "date"},
                 },
             },
@@ -191,31 +178,26 @@ def crear_colecciones() -> None:
                                  validationLevel="strict", validationAction="error")
             print(f"  + colección '{nombre}' creada con $jsonSchema")
         except CollectionInvalid:
+            # Ya existía: solo se actualiza la regla de validación
             db.command("collMod", nombre, validator=validador,
                        validationLevel="strict", validationAction="error")
-            print(f"  ~ colección '{nombre}' actualizada (collMod)")
+            print(f"  ~ colección '{nombre}' actualizada")
 
 
 def crear_indices() -> None:
+    # Únicos: no se permiten dos ciudadanos con el mismo DUI o correo
     db.ciudadanos.create_index("dui", unique=True)
     db.ciudadanos.create_index("email", unique=True)
-    db.ciudadanos.create_index([("direccion.departamento", ASCENDING), ("direccion.municipio", ASCENDING)])
 
     db.instituciones.create_index("codigo", unique=True)
-    db.instituciones.create_index([("categoriasAtendidas", ASCENDING), ("activa", ASCENDING)])
+    db.instituciones.create_index("categoriasAtendidas")
 
-    r = db.reportes
-    r.create_index("folio", unique=True)
-    # ESR (Equality, Sort, Range): filtros de igualdad primero, luego el orden por fecha
-    r.create_index([("estado", ASCENDING), ("categoria", ASCENDING), ("fechaCreacion", DESCENDING)])
-    r.create_index([("direccion.departamento", ASCENDING), ("direccion.municipio", ASCENDING),
-                    ("fechaCreacion", DESCENDING)])
-    r.create_index([("ciudadanoId", ASCENDING), ("fechaCreacion", DESCENDING)])
-    r.create_index([("institucion._id", ASCENDING), ("estado", ASCENDING)])
-    r.create_index([("ubicacion", GEOSPHERE)])
-    r.create_index([("titulo", TEXT), ("descripcion", TEXT), ("etiquetas", TEXT)],
-                   default_language="spanish", weights={"titulo": 5, "etiquetas": 3, "descripcion": 1},
-                   name="busqueda_texto")
+    db.reportes.create_index("folio", unique=True)
+    # Compuestos: apoyan los filtros más usados del listado, ordenados por fecha
+    db.reportes.create_index([("estado", ASCENDING), ("categoria", ASCENDING), ("fechaCreacion", DESCENDING)])
+    db.reportes.create_index([("direccion.departamento", ASCENDING), ("direccion.municipio", ASCENDING)])
+    db.reportes.create_index([("ciudadanoId", ASCENDING), ("fechaCreacion", DESCENDING)])
+    db.reportes.create_index("institucion._id")
     print("  + índices creados")
 
 

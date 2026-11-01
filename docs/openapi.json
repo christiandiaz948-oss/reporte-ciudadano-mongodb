@@ -610,7 +610,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Crear reporte (asigna institución automáticamente)",
+        "summary": "Crear reporte (se asigna la institución automáticamente)",
         "operationId": "crear_reporte_api_reportes_post",
         "requestBody": {
           "required": true,
@@ -647,7 +647,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Buscar reportes con filtros avanzados, orden y paginación",
+        "summary": "Buscar reportes con filtros, orden y paginación",
         "operationId": "listar_reportes_api_reportes_get",
         "parameters": [
           {
@@ -674,10 +674,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Uno o varios ($in)",
+              "description": "Uno o varios estados ($in)",
               "title": "Estado"
             },
-            "description": "Uno o varios ($in)"
+            "description": "Uno o varios estados ($in)"
           },
           {
             "name": "categoria",
@@ -707,10 +707,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Una o varias ($in)",
+              "description": "Una o varias categorías ($in)",
               "title": "Categoria"
             },
-            "description": "Una o varias ($in)"
+            "description": "Una o varias categorías ($in)"
           },
           {
             "name": "prioridad",
@@ -734,8 +734,10 @@
                   "type": "null"
                 }
               ],
+              "description": "Una o varias prioridades ($in)",
               "title": "Prioridad"
-            }
+            },
+            "description": "Una o varias prioridades ($in)"
           },
           {
             "name": "abiertos",
@@ -750,10 +752,10 @@
                   "type": "null"
                 }
               ],
-              "description": "true = no resueltos ni rechazados ($nin)",
+              "description": "true = ni resueltos ni rechazados ($nin)",
               "title": "Abiertos"
             },
-            "description": "true = no resueltos ni rechazados ($nin)"
+            "description": "true = ni resueltos ni rechazados ($nin)"
           },
           {
             "name": "urgentes",
@@ -768,10 +770,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Críticos O con 10+ apoyos ($or)",
+              "description": "Prioridad crítica O 10+ apoyos ($or)",
               "title": "Urgentes"
             },
-            "description": "Críticos O con 10+ apoyos ($or)"
+            "description": "Prioridad crítica O 10+ apoyos ($or)"
           },
           {
             "name": "departamento",
@@ -786,8 +788,10 @@
                   "type": "null"
                 }
               ],
+              "description": "Departamento (subdocumento direccion)",
               "title": "Departamento"
-            }
+            },
+            "description": "Departamento (subdocumento direccion)"
           },
           {
             "name": "municipio",
@@ -822,24 +826,6 @@
             }
           },
           {
-            "name": "sin_institucion",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "boolean"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Reportes sin institución asignada",
-              "title": "Sin Institucion"
-            },
-            "description": "Reportes sin institución asignada"
-          },
-          {
             "name": "desde",
             "in": "query",
             "required": false,
@@ -853,10 +839,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Fecha de creación desde ($gte)",
+              "description": "Creados desde esta fecha ($gte)",
               "title": "Desde"
             },
-            "description": "Fecha de creación desde ($gte)"
+            "description": "Creados desde esta fecha ($gte)"
           },
           {
             "name": "hasta",
@@ -872,10 +858,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Fecha de creación hasta ($lte)",
+              "description": "Creados hasta esta fecha ($lte)",
               "title": "Hasta"
             },
-            "description": "Fecha de creación hasta ($lte)"
+            "description": "Creados hasta esta fecha ($lte)"
           },
           {
             "name": "min_apoyos",
@@ -912,51 +898,13 @@
                   "type": "null"
                 }
               ],
-              "description": "Debe tener TODAS ($all)",
+              "description": "Debe tener TODAS estas etiquetas ($all)",
               "title": "Etiquetas"
             },
-            "description": "Debe tener TODAS ($all)"
+            "description": "Debe tener TODAS estas etiquetas ($all)"
           },
           {
-            "name": "con_evidencia",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "boolean"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Con al menos una evidencia ($exists sobre el índice 0)",
-              "title": "Con Evidencia"
-            },
-            "description": "Con al menos una evidencia ($exists sobre el índice 0)"
-          },
-          {
-            "name": "calificacion_max",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "maximum": 5,
-                  "minimum": 1
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Calificados con puntaje <= N (dot notation en subdocumento)",
-              "title": "Calificacion Max"
-            },
-            "description": "Calificados con puntaje <= N (dot notation en subdocumento)"
-          },
-          {
-            "name": "texto",
+            "name": "titulo",
             "in": "query",
             "required": false,
             "schema": {
@@ -968,10 +916,10 @@
                   "type": "null"
                 }
               ],
-              "description": "Búsqueda de texto completo en título/descripción ($text)",
-              "title": "Texto"
+              "description": "Texto contenido en el título ($regex)",
+              "title": "Titulo"
             },
-            "description": "Búsqueda de texto completo en título/descripción ($text)"
+            "description": "Texto contenido en el título ($regex)"
           },
           {
             "name": "orden",
@@ -979,7 +927,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "pattern": "^(fechaCreacion|fechaActualizacion|totalApoyos|nivelPrioridad)$",
+              "pattern": "^(fechaCreacion|totalApoyos|nivelPrioridad)$",
               "default": "fechaCreacion",
               "title": "Orden"
             }
@@ -1046,7 +994,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Cambiar estado (valida la máquina de estados)",
+        "summary": "Cambiar el estado del reporte",
         "operationId": "cambiar_estado_api_reportes__reporte_id__estado_patch",
         "parameters": [
           {
@@ -1065,56 +1013,6 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CambioEstado"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/reportes/{reporte_id}/institucion": {
-      "patch": {
-        "tags": [
-          "Reportes"
-        ],
-        "summary": "Reasignar institución manualmente",
-        "operationId": "asignar_institucion_api_reportes__reporte_id__institucion_patch",
-        "parameters": [
-          {
-            "name": "reporte_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Reporte Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AsignarInstitucion"
               }
             }
           }
@@ -1196,8 +1094,8 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Retirar apoyo ($pull)",
-        "operationId": "retirar_apoyo_api_reportes__reporte_id__apoyos__ciudadano_id__delete",
+        "summary": "Quitar un apoyo ($pull)",
+        "operationId": "quitar_apoyo_api_reportes__reporte_id__apoyos__ciudadano_id__delete",
         "parameters": [
           {
             "name": "reporte_id",
@@ -1245,7 +1143,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Agregar evidencia (máx. 10)",
+        "summary": "Agregar una evidencia (máximo 10)",
         "operationId": "agregar_evidencia_api_reportes__reporte_id__evidencias_post",
         "parameters": [
           {
@@ -1295,7 +1193,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Calificar la atención (solo autor y reporte resuelto)",
+        "summary": "Calificar la atención (solo el autor, con el reporte resuelto)",
         "operationId": "calificar_api_reportes__reporte_id__calificacion_post",
         "parameters": [
           {
@@ -1378,7 +1276,7 @@
         "tags": [
           "Reportes"
         ],
-        "summary": "Detalle del reporte (por _id o folio) con datos del ciudadano",
+        "summary": "Detalle de un reporte (por _id o folio) con el nombre del ciudadano",
         "operationId": "obtener_reporte_api_reportes__reporte_id__get",
         "parameters": [
           {
@@ -1413,108 +1311,13 @@
         }
       }
     },
-    "/api/reportes/cercanos": {
-      "get": {
-        "tags": [
-          "Reportes"
-        ],
-        "summary": "Reportes cercanos a un punto ($nearSphere, índice 2dsphere)",
-        "operationId": "reportes_cercanos_api_reportes_cercanos_get",
-        "parameters": [
-          {
-            "name": "lat",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "maximum": 14.5,
-              "minimum": 13.1,
-              "examples": [
-                13.6989
-              ],
-              "title": "Lat"
-            }
-          },
-          {
-            "name": "lng",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "maximum": -87.6,
-              "minimum": -90.2,
-              "examples": [
-                -89.1914
-              ],
-              "title": "Lng"
-            }
-          },
-          {
-            "name": "radio_m",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "maximum": 50000,
-              "minimum": 50,
-              "description": "Radio en metros",
-              "default": 2000,
-              "title": "Radio M"
-            },
-            "description": "Radio en metros"
-          },
-          {
-            "name": "solo_abiertos",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "default": true,
-              "title": "Solo Abiertos"
-            }
-          },
-          {
-            "name": "limite",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "maximum": 100,
-              "minimum": 1,
-              "default": 20,
-              "title": "Limite"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/analitica/resumen": {
+    "/api/analitica/por-categoria": {
       "get": {
         "tags": [
           "Analítica (Aggregation Pipeline)"
         ],
-        "summary": "Tablero general ($facet: varios agrupamientos en una sola consulta)",
-        "operationId": "resumen_api_analitica_resumen_get",
+        "summary": "Total de reportes, abiertos y resueltos por categoría",
+        "operationId": "por_categoria_api_analitica_por_categoria_get",
         "parameters": [
           {
             "name": "departamento",
@@ -1530,40 +1333,6 @@
                 }
               ],
               "title": "Departamento"
-            }
-          },
-          {
-            "name": "desde",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Desde"
-            }
-          },
-          {
-            "name": "hasta",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Hasta"
             }
           }
         ],
@@ -1594,7 +1363,7 @@
         "tags": [
           "Analítica (Aggregation Pipeline)"
         ],
-        "summary": "Ranking de municipios por reportes abiertos",
+        "summary": "Municipios con más reportes abiertos",
         "operationId": "por_municipio_api_analitica_por_municipio_get",
         "parameters": [
           {
@@ -1621,7 +1390,7 @@
               "type": "integer",
               "maximum": 44,
               "minimum": 1,
-              "default": 15,
+              "default": 10,
               "title": "Limite"
             }
           }
@@ -1653,129 +1422,8 @@
         "tags": [
           "Analítica (Aggregation Pipeline)"
         ],
-        "summary": "Tiempo promedio de resolución por institución ($group + $lookup + $unwind)",
+        "summary": "Días promedio de resolución por institución ($lookup + $unwind)",
         "operationId": "tiempos_resolucion_api_analitica_tiempos_resolucion_get",
-        "parameters": [
-          {
-            "name": "tipo",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Filtrar por tipo de institución (después del $lookup)",
-              "title": "Tipo"
-            },
-            "description": "Filtrar por tipo de institución (después del $lookup)"
-          },
-          {
-            "name": "min_resueltos",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "description": "Mínimo de casos para aparecer en el ranking",
-              "default": 3,
-              "title": "Min Resueltos"
-            },
-            "description": "Mínimo de casos para aparecer en el ranking"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/analitica/tendencia-mensual": {
-      "get": {
-        "tags": [
-          "Analítica (Aggregation Pipeline)"
-        ],
-        "summary": "Reportes por mes y categoría (dos $group encadenados)",
-        "operationId": "tendencia_mensual_api_analitica_tendencia_mensual_get",
-        "parameters": [
-          {
-            "name": "meses",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "maximum": 24,
-              "minimum": 1,
-              "default": 12,
-              "title": "Meses"
-            }
-          },
-          {
-            "name": "categoria",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Categoria"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/analitica/ciudadanos-activos": {
-      "get": {
-        "tags": [
-          "Analítica (Aggregation Pipeline)"
-        ],
-        "summary": "Ciudadanos más participativos ($group + $lookup)",
-        "operationId": "ciudadanos_activos_api_analitica_ciudadanos_activos_get",
         "parameters": [
           {
             "name": "limite",
@@ -1783,7 +1431,7 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 50,
+              "maximum": 57,
               "minimum": 1,
               "default": 10,
               "title": "Limite"
@@ -1817,7 +1465,7 @@
         "tags": [
           "Analítica (Aggregation Pipeline)"
         ],
-        "summary": "Etiquetas más frecuentes en problemas abiertos ($unwind de un array)",
+        "summary": "Etiquetas más frecuentes en reportes abiertos ($unwind de un array)",
         "operationId": "etiquetas_frecuentes_api_analitica_etiquetas_get",
         "parameters": [
           {
@@ -1830,16 +1478,6 @@
               "minimum": 1,
               "default": 10,
               "title": "Limite"
-            }
-          },
-          {
-            "name": "solo_abiertos",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "default": true,
-              "title": "Solo Abiertos"
             }
           }
         ],
@@ -1859,26 +1497,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/analitica/rendimiento-estados": {
-      "get": {
-        "tags": [
-          "Analítica (Aggregation Pipeline)"
-        ],
-        "summary": "Horas promedio entre cada cambio de estado ($unwind del historial)",
-        "description": "Desanida el historial embebido y mide cuánto tarda en promedio cada etapa del flujo.",
-        "operationId": "rendimiento_estados_api_analitica_rendimiento_estados_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
               }
             }
           }
@@ -1919,26 +1537,6 @@
           "ciudadanoId"
         ],
         "title": "ApoyoIn"
-      },
-      "AsignarInstitucion": {
-        "properties": {
-          "institucionId": {
-            "type": "string",
-            "title": "Institucionid"
-          },
-          "actor": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 2,
-            "title": "Actor"
-          }
-        },
-        "type": "object",
-        "required": [
-          "institucionId",
-          "actor"
-        ],
-        "title": "AsignarInstitucion"
       },
       "CalificacionIn": {
         "properties": {

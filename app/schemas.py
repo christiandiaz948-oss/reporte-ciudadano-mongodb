@@ -1,4 +1,8 @@
-"""Modelos de entrada de la API (primera capa de validación; la segunda es $jsonSchema)."""
+"""Modelos de entrada de la API.
+
+FastAPI revisa con estos modelos los datos que llegan (primera validación) y MongoDB vuelve a
+validarlos con el $jsonSchema de cada colección (segunda validación).
+"""
 from typing import Literal
 
 from pydantic import BaseModel, Field
@@ -94,11 +98,6 @@ class CambioEstado(BaseModel):
     estado: Estado
     comentario: str | None = Field(default=None, max_length=500)
     actor: str = Field(min_length=2, max_length=100, examples=["Operador Alcaldía SS Centro"])
-
-
-class AsignarInstitucion(BaseModel):
-    institucionId: str
-    actor: str = Field(min_length=2, max_length=100)
 
 
 class ApoyoIn(BaseModel):

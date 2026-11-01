@@ -8,61 +8,56 @@ puntualmente y mostrar la base de datos y la API funcionando.
 - [ ] Servicio de MongoDB corriendo; Compass abierto en la base `reporte_ciudadano`.
 - [ ] `python -m scripts.seed` ejecutado ese mismo día, para que las fechas sean recientes.
 - [ ] `uvicorn app.main:app` corriendo y <http://localhost:8000/docs> abierto.
-- [ ] Ventana de `mongosh` con [`consultas_demo.mongodb.js`](consultas_demo.mongodb.js) a mano.
-- [ ] Copiar en un bloc de notas un `ciudadanoId` y un folio de prueba para no buscarlos en vivo.
-- [ ] Ensayar al menos una vez con cronómetro.
+- [ ] [`consultas_demo.mongodb.js`](consultas_demo.mongodb.js) abierto para copiar consultas al shell de Compass.
+- [ ] Un `ciudadanoId` y un folio de prueba copiados en un bloc de notas, para no buscarlos en vivo.
+- [ ] Un ensayo completo con cronómetro.
 
 ## Guion de 15 minutos (propuesta de reparto)
 
 | Min | Quién | Qué se muestra |
 |---|---|---|
-| 0–2 | Integrante 1 | Problema que resuelve el sistema, actores (ciudadano, institución, autoridad) y **por qué MongoDB** (versión corta, ver abajo) |
-| 2–6 | Integrante 1 | **Modelo** en Compass: un reporte completo y la explicación de qué se embebió, qué se referenció y por qué. Pestaña *Validation* con el `$jsonSchema`; intentar insertar un documento inválido y mostrar el rechazo |
-| 6–10 | Integrante 2 | **API en Swagger:** crear un reporte (asignación automática a la alcaldía), apoyarlo, intentar apoyarlo dos veces (409), cambiar el estado hasta resuelto e intentar una transición inválida (409) |
-| 10–13 | Integrante 3 | **Lecturas avanzadas:** `GET /reportes` con varios filtros, `/reportes/cercanos` y `$text`. **Analítica:** `/analitica/tiempos-resolucion` (explicar `$lookup` + `$unwind`) y `/analitica/resumen` (`$facet`) |
+| 0–2 | Integrante 1 | Qué problema resuelve el sistema y **por qué MongoDB** (respuesta corta, abajo) |
+| 2–6 | Integrante 1 | **Modelo** en Compass: abrir un reporte y explicar qué se embebió y qué se referenció. Pestaña *Validation*: mostrar el `$jsonSchema` e insertar un documento inválido para que se vea el rechazo |
+| 6–10 | Integrante 2 | **API en Swagger:** crear un reporte (se asigna solo a la alcaldía), apoyarlo, intentar apoyarlo otra vez (409), llevarlo hasta "resuelto" e intentar un cambio no permitido (409) |
+| 10–13 | Integrante 3 | **Consultas:** `GET /reportes` con varios filtros (`abiertos`, `categoria`, `urgentes`). **Agregaciones:** `/analitica/tiempos-resolucion` (explicar `$lookup` + `$unwind`) y `/analitica/por-categoria` |
 | 13–15 | Todos | Escalabilidad (shard key) y preguntas |
 
 ---
 
 ## ¿Por qué MongoDB y no Cassandra?
 
-### Respuesta corta (30 segundos, para decir de memoria)
+### Respuesta corta (30 segundos, para decirla de memoria)
 
-> "Elegimos MongoDB porque el sistema lee mucho más de lo que escribe y necesita **consultas flexibles**:
-> el ciudadano y la institución filtran por estado, categoría, municipio, fechas, texto y cercanía, en cualquier
-> combinación. Cassandra obliga a conocer de antemano cada consulta y a crear una tabla por cada una, sin joins ni
-> agregaciones complejas. Además el reporte es naturalmente un **documento** con su historial, sus fotos y su
-> ubicación, y MongoDB nos da índices geoespaciales, búsqueda de texto, Aggregation Pipeline y validación con
-> `$jsonSchema`. Cassandra brilla con volúmenes masivos de escritura, como sensores IoT o telemetría, y ese no
+> "Elegimos MongoDB porque un reporte es naturalmente un **documento**: tiene su historial, sus fotos y su
+> dirección dentro. Además, la aplicación necesita **filtrar por muchos campos combinados**: estado, categoría,
+> municipio, fechas y etiquetas. MongoDB lo permite con índices y tiene el Aggregation Pipeline para las métricas.
+> En Cassandra cada consulta necesita su propia tabla diseñada de antemano, no hay joins y las agregaciones son
+> muy limitadas. Cassandra es mejor cuando hay muchísimas escrituras por segundo, como sensores o IoT, y ese no
 > es nuestro caso."
 
-### Argumentos detallados
+### Comparación
 
-| Criterio | Nuestro sistema necesita | MongoDB | Cassandra |
+| Criterio | Lo que necesita el sistema | MongoDB | Cassandra |
 |---|---|---|---|
-| **Forma del dato** | Un reporte con historial, evidencias, ubicación y calificación anidados | Documento JSON/BSON con subdocumentos y arrays consultables | Filas planas. Las colecciones y los UDT existen, pero no se puede filtrar dentro de ellos con libertad (y los UDT deben ser `frozen`) |
-| **Consultas** | Filtros combinables: estado + categoría + municipio + fechas + etiquetas + texto | Cualquier campo, con índices secundarios y compuestos | Diseño *query-first*: el `WHERE` debe incluir la **partition key**. Otra combinación exige una tabla nueva o `ALLOW FILTERING` (antipatrón que recorre el clúster) |
-| **Analítica** | Promedios por institución, ranking por municipio, tendencias | Aggregation Pipeline: `$group`, `$lookup`, `$unwind`, `$facet` | Sin joins; `GROUP BY` solo sobre columnas de la clave primaria; agregados limitados. Haría falta Spark |
-| **Geolocalización** | "Reportes cerca de mí" | Índice `2dsphere` y `$nearSphere` nativos | No tiene soporte geoespacial nativo; habría que simularlo con geohash |
-| **Búsqueda de texto** | Buscar "semáforo dañado" | Índice de texto en español | No nativo; SAI en versiones recientes y con limitaciones |
-| **Actualizaciones** | Cambiar el estado y registrar en la bitácora sin conflictos | `$set` + `$push` atómico en un documento y concurrencia optimista en el filtro | Cada consulta tiene su propia tabla desnormalizada: un cambio de estado debe escribirse en **varias tablas**. El control de concurrencia (`IF`, LWT) usa Paxos y es costoso |
-| **Consistencia** | Dos operadores no pueden dejar el reporte en estados contradictorios | Consistencia fuerte en el primario por defecto (CP en CAP) | Consistencia eventual o ajustable (AP en CAP) |
-| **Validación** | DUI, coordenadas dentro del país, enums | `$jsonSchema` con patrones, rangos y enums | Tipos de columna, pero sin reglas de negocio |
-| **Volumen de escritura** | Miles de reportes por día a nivel nacional | Suficiente, y escala con sharding si crece | Pensado para millones de escrituras por segundo: más capacidad de la necesaria |
+| **Forma de los datos** | Un reporte con historial, fotos y dirección dentro | Documentos con subdocumentos y arrays | Tablas con filas y columnas; los datos anidados son limitados |
+| **Consultas** | Combinar filtros: estado + categoría + municipio + fechas | Se puede filtrar por cualquier campo y crear índices | La consulta debe usar la **partition key**. Para otra combinación hay que crear otra tabla o usar `ALLOW FILTERING`, que es lento |
+| **Métricas** | Promedios por institución, conteos por municipio | Aggregation Pipeline (`$group`, `$lookup`, `$unwind`) | Sin joins y con agregaciones muy básicas |
+| **Actualizar un reporte** | Cambiar el estado y guardar el cambio en el historial | Un solo `update_one` con `$set` + `$push` | Los datos están duplicados en varias tablas: hay que actualizar todas |
+| **Validación** | DUI con formato, coordenadas dentro del país, estados válidos | `$jsonSchema` | Solo valida el tipo de cada columna |
+| **Volumen** | Miles de reportes al día | Suficiente, y escala con sharding | Diseñado para millones de escrituras por segundo: más de lo que necesitamos |
 
 ### ¿Cuándo sí usaríamos Cassandra?
 
-Si el sistema evolucionara, por ejemplo con **luminarias o medidores inteligentes** que envían telemetría cada pocos
-segundos, esa serie de tiempo masiva iría en Cassandra, con una tabla como
-`lecturas_por_sensor ((sensor_id, dia), fecha_hora)`, mientras los reportes ciudadanos seguirían en MongoDB.
-Esto se conoce como **persistencia políglota**: usar cada motor para lo que hace mejor. Mencionarlo muestra criterio.
+Si en el futuro se agregaran, por ejemplo, **lámparas inteligentes** que envían su estado cada pocos segundos, esos
+millones de lecturas irían en Cassandra, con una tabla particionada por sensor y día. Los reportes seguirían en
+MongoDB. Usar cada base de datos para lo que hace mejor se llama **persistencia políglota**.
 
-### "¿Y cómo se vería en Cassandra?" (por si lo preguntan)
+### "¿Cómo se vería en Cassandra?" (por si lo preguntan)
 
-Habría que crear una tabla por consulta y duplicar los datos:
+Se diseña una tabla por cada consulta (*query-first*, clase 16):
 ```sql
 CREATE TABLE reportes_por_municipio (
-  municipio text, estado text, fecha_creacion timestamp, folio text, titulo text, categoria text,
+  municipio text, estado text, fecha_creacion timestamp, folio text, titulo text,
   PRIMARY KEY ((municipio, estado), fecha_creacion, folio)
 ) WITH CLUSTERING ORDER BY (fecha_creacion DESC, folio ASC);
 
@@ -70,55 +65,53 @@ CREATE TABLE reportes_por_ciudadano (
   ciudadano_id uuid, fecha_creacion timestamp, folio text, titulo text, estado text,
   PRIMARY KEY ((ciudadano_id), fecha_creacion, folio)
 ) WITH CLUSTERING ORDER BY (fecha_creacion DESC, folio ASC);
-
-CREATE TABLE reportes_por_institucion ( ... PRIMARY KEY ((institucion_id, estado), fecha_creacion, folio) );
 ```
-Cada cambio de estado tendría que actualizar las tres tablas. Y como `estado` forma parte de la clave de partición,
-cambiarlo implica **borrar e insertar**, lo que genera *tombstones*. Filtrar además por categoría + fechas + texto
-exigiría más tablas todavía. Este ejemplo sirve para mostrar que el grupo conoce Cassandra y la descartó con
-argumentos, no por desconocimiento.
+Cada reporte tendría que guardarse en las dos tablas, y en cada cambio de estado habría que actualizar ambas.
+Además, como `estado` forma parte de la clave, cambiarlo obliga a borrar la fila e insertarla de nuevo.
+Para filtrar también por categoría o fechas harían falta más tablas.
 
 ---
 
 ## Preguntas probables y respuestas
 
 **¿Por qué el historial está embebido y no en otra colección?**
-Siempre se lee junto con el reporte, tiene pocos elementos (un tope de 50) y así el cambio de estado y su registro
-en la bitácora son atómicos en una sola operación, sin transacciones multi-documento.
+Porque siempre se muestra junto con el reporte y son pocos cambios (máximo 50). Así, con un solo `update_one`
+se cambia el estado (`$set`) y se agrega el registro al historial (`$push`).
 
-**¿Qué pasa con el límite de 16 MB?**
-Las evidencias se guardan como URLs, no como binarios, y los arrays tienen tope en el `$jsonSchema`
-(10 evidencias, 50 cambios de historial). Un reporte típico pesa pocos KB. El único array que podría crecer sin
-control es `apoyos`; si un reporte superara miles de apoyos, se aplicaría el *Outlier Pattern*.
+**¿Qué pasa con el límite de 16 MB por documento?**
+Las fotos no se guardan en MongoDB, solo su URL, y los arrays tienen máximo (10 evidencias, 50 cambios de historial).
+Un reporte pesa unos pocos KB.
 
-**¿Por qué duplican el nombre de la institución dentro del reporte?**
-Es el *Extended Reference Pattern*: el listado, la consulta más frecuente, muestra el nombre sin hacer un `$lookup`.
-El nombre de una institución casi nunca cambia, y cuando cambia el endpoint `PATCH` lo sincroniza con `update_many`.
+**¿Por qué guardan el nombre de la institución dentro del reporte si ya tienen su id?**
+Es una **referencia extendida** (clase 10): el listado muestra el nombre en cada fila y así no hace falta un
+`$lookup`. Si la institución cambia de nombre, el `PATCH /instituciones/{id}` lo actualiza en todos sus reportes
+con `update_many`.
 
 **¿Por qué el ciudadano no está embebido en el reporte?**
-Porque tiene datos personales (DUI, teléfono) que no deben duplicarse, crea muchos reportes (1:N sin límite) y
-tiene vida propia. Se guarda solo `ciudadanoId`.
+Porque tiene datos personales (DUI, teléfono) que no se deben copiar en cada reporte, puede tener muchos reportes
+y existe por sí solo. Por eso el reporte guarda únicamente el `ciudadanoId`.
 
 **¿Cómo evitan que alguien apoye dos veces?**
-Con el filtro `apoyos: {$ne: id}` dentro del mismo `update_one` que hace `$push` y `$inc`. Si ya existe, el update
-no modifica nada y la API responde 409. Es atómico y no hay condición de carrera.
+El filtro del `update_one` incluye `apoyos: {$ne: id}`, es decir, "que el ciudadano todavía no esté en el array".
+Si ya estaba, no se modifica nada y la API responde 409.
 
 **¿Qué pasa si se inserta un documento inválido desde Compass?**
-El `$jsonSchema` lo rechaza con el error 121 (*Document failed validation*). Se puede mostrar en vivo.
+MongoDB lo rechaza con el error 121 (*Document failed validation*) gracias al `$jsonSchema`. Se puede mostrar en vivo.
 
-**¿Qué índices crearon y por qué?**
-Ver la tabla de [DISENO.md](DISENO.md#5-índices). Conviene destacar el índice compuesto que sigue la regla ESR
-(Equality, Sort, Range), el `2dsphere` y el de texto en español con pesos.
+**¿Qué índices crearon?**
+Índices únicos para DUI, correo y folio, y compuestos para los filtros más usados, como
+`{estado, categoria, fechaCreacion}`. La tabla completa está en [DISENO.md](DISENO.md#5-índices).
 
-**¿Cómo escalaría?**
-Con sharding sobre `{ "direccion.departamento": 1, "_id": "hashed" }`. Las consultas por departamento quedan
-dirigidas y las escrituras se reparten sin *hotspots*. No se usa la fecha porque es monótona creciente.
+**¿Cómo escalaría el sistema?**
+Con sharding usando `{ "direccion.departamento": 1, "_id": "hashed" }`. Las consultas por departamento van a un
+solo shard y el `_id` hasheado reparte los datos para que San Salvador no se sature. No se usa la fecha porque
+siempre crece y todo iría al mismo shard.
+
+**¿Qué hace `$lookup` en su agregación?**
+En `tiempos-resolucion`, primero se agrupan los reportes por institución y se calcula el promedio. Después
+`$lookup` trae el nombre y el tipo de la institución desde su colección, como un JOIN. Como `$lookup` devuelve
+un arreglo, `$unwind` lo convierte en un objeto.
 
 **¿Por qué FastAPI?**
-Es un framework de Python que valida la entrada con tipos y genera la documentación Swagger automáticamente,
-lo que cubre el entregable de la colección de pruebas. PyMongo es el driver oficial de MongoDB para Python.
-
-**¿Qué hace `$lookup` en su pipeline?**
-En `tiempos-resolucion`, después de agrupar por `institucion._id`, `$lookup` trae el tipo y el nombre de la
-institución desde su colección, y `$unwind` convierte el arreglo resultante en un objeto. Se hace después del
-`$group` para unir pocas filas (una por institución) y no los 400 reportes.
+Es un framework de Python para crear APIs. Valida los datos que llegan y genera solo la documentación Swagger en
+`/docs`, que usamos para probar los endpoints. PyMongo es el driver oficial de MongoDB para Python.
