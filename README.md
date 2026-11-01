@@ -82,6 +82,21 @@ Después de levantar la API:
 
 Los datos son ficticios. Se generan con una semilla fija, así que cada carga produce los mismos datos.
 
+### Opción manual: crear la base desde MongoDB Compass
+
+En lugar de `python -m scripts.seed`, la base también se puede crear a mano con los archivos de la carpeta `datos/`:
+
+1. Abrir Compass y conectarse a `mongodb://localhost:27017`.
+2. **Colecciones, validaciones e índices:** abrir la pestaña **_MONGOSH** (abajo), pegar todo el contenido de
+   [`datos/crear_bd.mongodb.js`](datos/crear_bd.mongodb.js) y presionar Enter. Debe aparecer *"Base reporte_ciudadano creada"*.
+   - Alternativa sin mongosh: crear las colecciones con **Create collection**, pegar en la pestaña **Validation** el
+     archivo correspondiente de `datos/validaciones/` y crear los índices en la pestaña **Indexes**.
+3. **Datos:** en cada colección, **Add Data → Import JSON or CSV file** y elegir el archivo con el mismo nombre:
+   `instituciones.json`, `ciudadanos.json`, `reportes.json` y `contadores.json` (este último en una colección `contadores`).
+
+> Importar primero las colecciones y después los datos: así el `$jsonSchema` ya valida cada documento al entrar.
+> Si la base ya existe, borrarla antes en Compass (ícono de papelera junto a `reporte_ciudadano`).
+
 ## Endpoints
 
 Todos los endpoints llevan el prefijo `/api`.
@@ -110,13 +125,13 @@ Todos los endpoints llevan el prefijo `/api`.
 | GET | `/ciudadanos/{id}/reportes` | Consulta apoyada en el índice `{ciudadanoId, fechaCreacion}` |
 | GET | `/instituciones` | Igualdad sobre un array y `$or` |
 
-### Reportes y analítica (Aggregation Pipeline)
+### Métricas (Aggregation Pipeline)
 | Ruta | Etapas principales |
 |---|---|
-| `/analitica/por-categoria` | `$match`, `$group` con `$sum` y `$cond`, `$sort`, `$project` |
-| `/analitica/por-municipio` | `$group` por dos campos, `$sort`, `$limit` |
-| `/analitica/tiempos-resolucion` | `$match`, `$project` con `$dateDiff`, `$group` con `$avg`, **`$lookup`**, **`$unwind`** |
-| `/analitica/etiquetas` | **`$unwind`** de un array, `$group`, `$sort` |
+| `/metricas/por-categoria` | `$match`, `$group` con `$sum` y `$cond`, `$sort`, `$project` |
+| `/metricas/por-municipio` | `$group` por dos campos, `$sort`, `$limit` |
+| `/metricas/tiempos-resolucion` | `$match`, `$project` con `$dateDiff`, `$group` con `$avg`, **`$lookup`**, **`$unwind`** |
+| `/metricas/etiquetas` | **`$unwind`** de un array, `$group`, `$sort` |
 
 ## Estructura del repositorio
 
@@ -127,7 +142,11 @@ app/
   catalogos.py       # categorías, estados, transiciones y los 44 municipios
   schemas.py         # validación de entrada (Pydantic)
   servicios.py       # asignación de institución y folio
-  routers/           # ciudadanos, instituciones, reportes, analitica
+  api/               # una subcarpeta por API, cada una con su rutas.py:
+    ciudadanos/      #   /api/ciudadanos
+    instituciones/   #   /api/instituciones
+    reportes/        #   /api/reportes
+    metricas/        #   /api/metricas (agregaciones)
 frontend/
   index.html         # las 4 pantallas: reportes, detalle, registrar y métricas
   app.js             # llama a la API con fetch() y dibuja los datos
@@ -135,6 +154,10 @@ frontend/
 scripts/
   init_db.py         # colecciones con $jsonSchema + índices (idempotente)
   seed.py            # carga de datos de prueba
+datos/
+  crear_bd.mongodb.js        # crea colecciones con $jsonSchema e índices (pegar en mongosh de Compass)
+  validaciones/              # $jsonSchema de cada colección (pestaña Validation de Compass)
+  *.json                     # documentos para Import JSON en Compass
 docs/
   consultas_demo.mongodb.js  # consultas para ejecutar en mongosh o Compass
   openapi.json       # especificación para importar en Postman o Insomnia

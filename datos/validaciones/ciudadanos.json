@@ -1,0 +1,81 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "dui",
+      "nombre",
+      "email",
+      "direccion",
+      "fechaRegistro",
+      "estadisticas"
+    ],
+    "properties": {
+      "dui": {
+        "bsonType": "string",
+        "pattern": "^[0-9]{8}-[0-9]$",
+        "description": "DUI con formato 00000000-0"
+      },
+      "nombre": {
+        "bsonType": "string",
+        "minLength": 3,
+        "maxLength": 100
+      },
+      "email": {
+        "bsonType": "string",
+        "pattern": "^[^@ ]+@[^@ ]+\\.[^@ ]+$"
+      },
+      "telefono": {
+        "bsonType": [
+          "string",
+          "null"
+        ],
+        "pattern": "^[267][0-9]{3}-[0-9]{4}$"
+      },
+      "direccion": {
+        "bsonType": "object",
+        "required": [
+          "departamento",
+          "municipio"
+        ],
+        "properties": {
+          "departamento": {
+            "bsonType": "string"
+          },
+          "municipio": {
+            "bsonType": "string"
+          },
+          "colonia": {
+            "bsonType": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "fechaRegistro": {
+        "bsonType": "date"
+      },
+      "estadisticas": {
+        "bsonType": "object",
+        "required": [
+          "totalReportes"
+        ],
+        "properties": {
+          "totalReportes": {
+            "bsonType": [
+              "int",
+              "long"
+            ],
+            "minimum": 0
+          },
+          "ultimoReporte": {
+            "bsonType": [
+              "date",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

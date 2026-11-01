@@ -1,0 +1,1904 @@
+[
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1a"
+    },
+    "folio": "RC-2025-000001",
+    "titulo": "Acumulación de basura en esquina",
+    "descripcion": "Se acumula basura desde hace varios días, hay malos olores y zancudos.",
+    "categoria": "basura",
+    "prioridad": "critica",
+    "nivelPrioridad": 4,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.328935,
+      "longitud": -87.882657
+    },
+    "direccion": {
+      "departamento": "La Unión",
+      "municipio": "La Unión Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae15"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfd"
+      },
+      "codigo": "AM-LA-UNION-SUR",
+      "nombre": "Alcaldía Municipal de La Unión Sur"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2025-12-15T19:05:07.529Z"
+        },
+        "actor": "Daniela Orellana Martínez",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2025-12-17T07:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2025-12-18T13:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2025-12-19T17:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2025-12-20T06:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2025-000001-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2025-12-15T19:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2025-000001-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2025-12-15T19:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae18"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0e"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0b"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "salud",
+      "zancudos"
+    ],
+    "fechaCreacion": {
+      "$date": "2025-12-15T19:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2025-12-20T06:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2025-12-20T06:05:07.529Z"
+    },
+    "calificacion": {
+      "puntaje": 4,
+      "comentario": null,
+      "fecha": {
+        "$date": "2025-12-20T06:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1b"
+    },
+    "folio": "RC-2026-000002",
+    "titulo": "Falta señalización de paso peatonal",
+    "descripcion": "No hay señalización y los vehículos pasan rápido donde cruzan niños.",
+    "categoria": "seguridad_vial",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_revision",
+    "ubicacion": {
+      "latitud": 13.713361,
+      "longitud": -88.946358
+    },
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0f"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae01"
+      },
+      "codigo": "VMT",
+      "nombre": "Viceministerio de Transporte"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-20T10:05:07.529Z"
+        },
+        "actor": "Roberto Guardado López",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-21T21:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000002-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-20T10:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae15"
+      }
+    ],
+    "totalApoyos": 1,
+    "etiquetas": [
+      "escuela"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-20T10:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-21T21:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1c"
+    },
+    "folio": "RC-2026-000003",
+    "titulo": "Fuga de agua potable",
+    "descripcion": "Hay una fuga de agua potable que se desperdicia mientras varias casas no tienen servicio.",
+    "categoria": "agua_potable",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_revision",
+    "ubicacion": {
+      "latitud": 13.858384,
+      "longitud": -88.722137
+    },
+    "direccion": {
+      "departamento": "Cabañas",
+      "municipio": "Cabañas Oeste",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0b"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfe"
+      },
+      "codigo": "ANDA",
+      "nombre": "Administración Nacional de Acueductos y Alcantarillados"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-08T11:05:07.529Z"
+        },
+        "actor": "Ana Mejía Menjívar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-09T01:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae19"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae18"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae16"
+      }
+    ],
+    "totalApoyos": 3,
+    "etiquetas": [
+      "fuga"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-08T11:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-09T01:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1d"
+    },
+    "folio": "RC-2026-000004",
+    "titulo": "Música a alto volumen todas las noches",
+    "descripcion": "Ruido excesivo después de las 10 p.m., los vecinos no pueden descansar.",
+    "categoria": "ruido",
+    "prioridad": "alta",
+    "nivelPrioridad": 3,
+    "estado": "en_revision",
+    "ubicacion": {
+      "latitud": 13.956805,
+      "longitud": -89.861681
+    },
+    "direccion": {
+      "departamento": "Ahuachapán",
+      "municipio": "Ahuachapán Norte",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae17"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925add2"
+      },
+      "codigo": "AM-AHUACHAPAN-NORTE",
+      "nombre": "Alcaldía Municipal de Ahuachapán Norte"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-07T23:05:07.529Z"
+        },
+        "actor": "Daniela Rodríguez Romero",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-09T03:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000004-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-07T23:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      }
+    ],
+    "totalApoyos": 2,
+    "etiquetas": [
+      "noche",
+      "convivencia"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-07T23:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-09T03:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1e"
+    },
+    "folio": "RC-2026-000005",
+    "titulo": "Túmulo sin pintar",
+    "descripcion": "No hay señalización y los vehículos pasan rápido donde cruzan niños.",
+    "categoria": "seguridad_vial",
+    "prioridad": "critica",
+    "nivelPrioridad": 4,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.511615,
+      "longitud": -88.145213
+    },
+    "direccion": {
+      "departamento": "San Miguel",
+      "municipio": "San Miguel Oeste",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae12"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae01"
+      },
+      "codigo": "VMT",
+      "nombre": "Viceministerio de Transporte"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-05-17T14:05:07.529Z"
+        },
+        "actor": "Ana Romero Aguilar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-05-19T03:35:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-05-21T15:35:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-05-25T04:35:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2026-05-28T12:35:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000005-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-05-17T14:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [],
+    "totalApoyos": 0,
+    "etiquetas": [
+      "peatones"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-05-17T14:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-05-28T12:35:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2026-05-28T12:35:07.529Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae1f"
+    },
+    "folio": "RC-2025-000006",
+    "titulo": "Árbol caído obstruye la vía",
+    "descripcion": "Después de la tormenta un árbol bloquea el paso de vehículos y peatones.",
+    "categoria": "arbol_caido",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.352078,
+      "longitud": -87.861953
+    },
+    "direccion": {
+      "departamento": "La Unión",
+      "municipio": "La Unión Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae15"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfd"
+      },
+      "codigo": "AM-LA-UNION-SUR",
+      "nombre": "Alcaldía Municipal de La Unión Sur"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2025-11-02T23:05:07.529Z"
+        },
+        "actor": "Daniela Orellana Martínez",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2025-11-03T04:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2025-11-04T06:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2025-11-04T20:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2025-11-05T22:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Unión Sur",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2025-000006-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2025-11-02T23:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae16"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae14"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0e"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "peligro",
+      "tormenta"
+    ],
+    "fechaCreacion": {
+      "$date": "2025-11-02T23:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2025-11-05T22:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2025-11-05T22:05:07.529Z"
+    },
+    "calificacion": {
+      "puntaje": 3,
+      "comentario": null,
+      "fecha": {
+        "$date": "2025-11-05T22:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae20"
+    },
+    "folio": "RC-2026-000007",
+    "titulo": "El camión recolector no pasa",
+    "descripcion": "Se acumula basura desde hace varios días, hay malos olores y zancudos.",
+    "categoria": "basura",
+    "prioridad": "baja",
+    "nivelPrioridad": 1,
+    "estado": "recibido",
+    "ubicacion": {
+      "latitud": 13.440632,
+      "longitud": -88.198645
+    },
+    "direccion": {
+      "departamento": "San Miguel",
+      "municipio": "San Miguel Centro",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae11"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adf8"
+      },
+      "codigo": "AM-SAN-MIGUEL-CENTRO",
+      "nombre": "Alcaldía Municipal de San Miguel Centro"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-10-26T05:05:07.529Z"
+        },
+        "actor": "María Menjívar García",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae16"
+      }
+    ],
+    "totalApoyos": 1,
+    "etiquetas": [
+      "zancudos",
+      "salud"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-10-26T05:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-10-26T05:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae21"
+    },
+    "folio": "RC-2026-000008",
+    "titulo": "Aguas negras en la calle",
+    "descripcion": "Las aguas negras corren por la calle y cuando llueve se inunda el pasaje.",
+    "categoria": "alcantarillado",
+    "prioridad": "baja",
+    "nivelPrioridad": 1,
+    "estado": "en_proceso",
+    "ubicacion": {
+      "latitud": 13.682302,
+      "longitud": -88.911417
+    },
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0f"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfe"
+      },
+      "codigo": "ANDA",
+      "nombre": "Administración Nacional de Acueductos y Alcantarillados"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-10-03T15:05:07.529Z"
+        },
+        "actor": "Roberto Guardado López",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-10-03T23:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-10-04T13:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-10-05T09:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000008-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-10-03T15:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000008-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-10-03T15:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae0b"
+      }
+    ],
+    "totalApoyos": 1,
+    "etiquetas": [
+      "salud",
+      "inundacion"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-10-03T15:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-10-05T09:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae22"
+    },
+    "folio": "RC-2026-000009",
+    "titulo": "Semáforo intermitente en hora pico",
+    "descripcion": "El semáforo no funciona y en hora pico se forman congestionamientos.",
+    "categoria": "semaforo",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "asignado",
+    "ubicacion": {
+      "latitud": 13.455763,
+      "longitud": -88.928483
+    },
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Centro",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae19"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae01"
+      },
+      "codigo": "VMT",
+      "nombre": "Viceministerio de Transporte"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-20T15:05:07.529Z"
+        },
+        "actor": "Luis Orellana Flores",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-21T18:35:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-09-24T14:05:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae15"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0f"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae17"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "peligro",
+      "trafico"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-20T15:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-24T14:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae23"
+    },
+    "folio": "RC-2026-000010",
+    "titulo": "Lámpara apagada en pasaje",
+    "descripcion": "La calle queda completamente oscura por la noche y es peligroso caminar.",
+    "categoria": "alumbrado",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_proceso",
+    "ubicacion": {
+      "latitud": 13.952568,
+      "longitud": -89.574596
+    },
+    "direccion": {
+      "departamento": "Santa Ana",
+      "municipio": "Santa Ana Norte",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae16"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae08"
+      },
+      "codigo": "AES-CLESA",
+      "nombre": "AES CLESA - Distribuidora eléctrica"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-13T04:05:07.529Z"
+        },
+        "actor": "Rosa Guardado Aguilar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-14T05:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-09-14T21:05:07.529Z"
+        },
+        "actor": "AES CLESA - Distribuidora eléctrica",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-09-15T04:05:07.529Z"
+        },
+        "actor": "AES CLESA - Distribuidora eléctrica",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000010-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-13T04:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000010-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-13T04:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae0c"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0d"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae14"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae19"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae15"
+      }
+    ],
+    "totalApoyos": 5,
+    "etiquetas": [
+      "noche"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-13T04:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-15T04:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae24"
+    },
+    "folio": "RC-2026-000011",
+    "titulo": "El camión recolector no pasa",
+    "descripcion": "Se acumula basura desde hace varios días, hay malos olores y zancudos.",
+    "categoria": "basura",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_proceso",
+    "ubicacion": {
+      "latitud": 13.50549,
+      "longitud": -88.911085
+    },
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Centro",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae14"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adee"
+      },
+      "codigo": "AM-LA-PAZ-CENTRO",
+      "nombre": "Alcaldía Municipal de La Paz Centro"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-10-04T15:05:07.529Z"
+        },
+        "actor": "Fátima Romero Menjívar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-10-05T09:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-10-05T21:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Paz Centro",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-10-06T12:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Paz Centro",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000011-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-10-04T15:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae0b"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae16"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae17"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "salud"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-10-04T15:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-10-06T12:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae25"
+    },
+    "folio": "RC-2026-000012",
+    "titulo": "Alcantarilla sin tapadera",
+    "descripcion": "Las aguas negras corren por la calle y cuando llueve se inunda el pasaje.",
+    "categoria": "alcantarillado",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_proceso",
+    "ubicacion": {
+      "latitud": 13.84175,
+      "longitud": -88.724213
+    },
+    "direccion": {
+      "departamento": "Cabañas",
+      "municipio": "Cabañas Oeste",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0b"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfe"
+      },
+      "codigo": "ANDA",
+      "nombre": "Administración Nacional de Acueductos y Alcantarillados"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-30T00:05:07.529Z"
+        },
+        "actor": "Ana Mejía Menjívar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-30T18:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-10-02T00:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-10-02T12:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae19"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae14"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae10"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae18"
+      }
+    ],
+    "totalApoyos": 5,
+    "etiquetas": [
+      "inundacion",
+      "salud",
+      "lluvia"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-30T00:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-10-02T12:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae26"
+    },
+    "folio": "RC-2026-000013",
+    "titulo": "Música a alto volumen todas las noches",
+    "descripcion": "Ruido excesivo después de las 10 p.m., los vecinos no pueden descansar.",
+    "categoria": "ruido",
+    "prioridad": "alta",
+    "nivelPrioridad": 3,
+    "estado": "rechazado",
+    "ubicacion": {
+      "latitud": 13.485911,
+      "longitud": -88.936299
+    },
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Este",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0e"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adef"
+      },
+      "codigo": "AM-LA-PAZ-ESTE",
+      "nombre": "Alcaldía Municipal de La Paz Este"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-03-21T06:05:07.529Z"
+        },
+        "actor": "Andrea Rivera Rivera",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-03-22T09:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "rechazado",
+        "fecha": {
+          "$date": "2026-03-23T03:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000013-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-03-21T06:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000013-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-03-21T06:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000013-2.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-03-21T06:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae19"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae10"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0f"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "noche",
+      "convivencia"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-03-21T06:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-03-23T03:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae27"
+    },
+    "folio": "RC-2026-000014",
+    "titulo": "Semáforo intermitente en hora pico",
+    "descripcion": "El semáforo no funciona y en hora pico se forman congestionamientos.",
+    "categoria": "semaforo",
+    "prioridad": "baja",
+    "nivelPrioridad": 1,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.303796,
+      "longitud": -87.816048
+    },
+    "direccion": {
+      "departamento": "La Unión",
+      "municipio": "La Unión Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae15"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae01"
+      },
+      "codigo": "VMT",
+      "nombre": "Viceministerio de Transporte"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-04-13T12:05:07.529Z"
+        },
+        "actor": "Daniela Orellana Martínez",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-04-16T15:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-04-17T06:05:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-04-18T19:35:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2026-04-19T18:05:07.529Z"
+        },
+        "actor": "Viceministerio de Transporte",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae10"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      }
+    ],
+    "totalApoyos": 2,
+    "etiquetas": [
+      "peligro"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-04-13T12:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-04-19T18:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2026-04-19T18:05:07.529Z"
+    },
+    "calificacion": {
+      "puntaje": 5,
+      "comentario": null,
+      "fecha": {
+        "$date": "2026-04-19T18:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae28"
+    },
+    "folio": "RC-2025-000015",
+    "titulo": "Música a alto volumen todas las noches",
+    "descripcion": "Ruido excesivo después de las 10 p.m., los vecinos no pueden descansar.",
+    "categoria": "ruido",
+    "prioridad": "critica",
+    "nivelPrioridad": 4,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.463361,
+      "longitud": -88.203856
+    },
+    "direccion": {
+      "departamento": "San Miguel",
+      "municipio": "San Miguel Centro",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae11"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adf8"
+      },
+      "codigo": "AM-SAN-MIGUEL-CENTRO",
+      "nombre": "Alcaldía Municipal de San Miguel Centro"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2025-11-16T07:05:07.529Z"
+        },
+        "actor": "María Menjívar García",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2025-11-16T21:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2025-11-18T09:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de San Miguel Centro",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2025-11-18T19:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de San Miguel Centro",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2025-11-19T04:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de San Miguel Centro",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae17"
+      }
+    ],
+    "totalApoyos": 1,
+    "etiquetas": [
+      "noche"
+    ],
+    "fechaCreacion": {
+      "$date": "2025-11-16T07:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2025-11-19T04:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2025-11-19T04:05:07.529Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae29"
+    },
+    "folio": "RC-2026-000016",
+    "titulo": "Ruido excesivo de bar nocturno",
+    "descripcion": "Ruido excesivo después de las 10 p.m., los vecinos no pueden descansar.",
+    "categoria": "ruido",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "en_revision",
+    "ubicacion": {
+      "latitud": 13.742198,
+      "longitud": -88.977049
+    },
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0f"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adec"
+      },
+      "codigo": "AM-CUSCATLAN-SUR",
+      "nombre": "Alcaldía Municipal de Cuscatlán Sur"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-25T22:05:07.529Z"
+        },
+        "actor": "Roberto Guardado López",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-26T02:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000016-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-25T22:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000016-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-25T22:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae16"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae12"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae11"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "noche"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-25T22:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-26T02:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae2a"
+    },
+    "folio": "RC-2025-000017",
+    "titulo": "Lámpara apagada en pasaje",
+    "descripcion": "La calle queda completamente oscura por la noche y es peligroso caminar.",
+    "categoria": "alumbrado",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.86995,
+      "longitud": -88.765184
+    },
+    "direccion": {
+      "departamento": "Cabañas",
+      "municipio": "Cabañas Oeste",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0b"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae06"
+      },
+      "codigo": "CAESS",
+      "nombre": "CAESS - Distribuidora eléctrica"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2025-11-17T04:05:07.529Z"
+        },
+        "actor": "Ana Mejía Menjívar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2025-11-18T07:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2025-11-18T15:05:07.529Z"
+        },
+        "actor": "CAESS - Distribuidora eléctrica",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2025-11-19T18:05:07.529Z"
+        },
+        "actor": "CAESS - Distribuidora eléctrica",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2025-11-20T17:05:07.529Z"
+        },
+        "actor": "CAESS - Distribuidora eléctrica",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae14"
+      }
+    ],
+    "totalApoyos": 1,
+    "etiquetas": [
+      "noche",
+      "seguridad"
+    ],
+    "fechaCreacion": {
+      "$date": "2025-11-17T04:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2025-11-20T17:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2025-11-20T17:05:07.529Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae2b"
+    },
+    "folio": "RC-2025-000018",
+    "titulo": "Zona sin alumbrado público",
+    "descripcion": "La calle queda completamente oscura por la noche y es peligroso caminar.",
+    "categoria": "alumbrado",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 14.031769,
+      "longitud": -89.575488
+    },
+    "direccion": {
+      "departamento": "Santa Ana",
+      "municipio": "Santa Ana Norte",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae16"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925ae08"
+      },
+      "codigo": "AES-CLESA",
+      "nombre": "AES CLESA - Distribuidora eléctrica"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2025-11-15T01:05:07.529Z"
+        },
+        "actor": "Rosa Guardado Aguilar",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2025-11-16T03:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2025-11-17T13:05:07.529Z"
+        },
+        "actor": "AES CLESA - Distribuidora eléctrica",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2025-11-19T00:05:07.529Z"
+        },
+        "actor": "AES CLESA - Distribuidora eléctrica",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2025-11-19T11:05:07.529Z"
+        },
+        "actor": "AES CLESA - Distribuidora eléctrica",
+        "comentario": null
+      }
+    ],
+    "evidencias": [],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0e"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae10"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae15"
+      }
+    ],
+    "totalApoyos": 4,
+    "etiquetas": [
+      "noche"
+    ],
+    "fechaCreacion": {
+      "$date": "2025-11-15T01:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2025-11-19T11:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2025-11-19T11:05:07.529Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae2c"
+    },
+    "folio": "RC-2026-000019",
+    "titulo": "Colonia sin servicio de agua",
+    "descripcion": "Hay una fuga de agua potable que se desperdicia mientras varias casas no tienen servicio.",
+    "categoria": "agua_potable",
+    "prioridad": "baja",
+    "nivelPrioridad": 1,
+    "estado": "en_proceso",
+    "ubicacion": {
+      "latitud": 13.692017,
+      "longitud": -88.911084
+    },
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Sur",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0f"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adfe"
+      },
+      "codigo": "ANDA",
+      "nombre": "Administración Nacional de Acueductos y Alcantarillados"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-09-14T18:05:07.529Z"
+        },
+        "actor": "Roberto Guardado López",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-09-16T18:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-09-19T16:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-09-22T02:05:07.529Z"
+        },
+        "actor": "Administración Nacional de Acueductos y Alcantarillados",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000019-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-14T18:05:07.529Z"
+        }
+      },
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000019-1.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-09-14T18:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae0d"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae0e"
+      }
+    ],
+    "totalApoyos": 2,
+    "etiquetas": [
+      "desperdicio",
+      "fuga"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-09-14T18:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-09-22T02:05:07.529Z"
+    },
+    "fechaResolucion": null
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae2d"
+    },
+    "folio": "RC-2026-000020",
+    "titulo": "Botadero ilegal junto al parque",
+    "descripcion": "Se acumula basura desde hace varios días, hay malos olores y zancudos.",
+    "categoria": "basura",
+    "prioridad": "media",
+    "nivelPrioridad": 2,
+    "estado": "resuelto",
+    "ubicacion": {
+      "latitud": 13.464536,
+      "longitud": -88.937312
+    },
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Este",
+      "referencia": null
+    },
+    "ciudadanoId": {
+      "$oid": "6ae6ba73af7333f46925ae0e"
+    },
+    "institucion": {
+      "_id": {
+        "$oid": "6ae6ba73af7333f46925adef"
+      },
+      "codigo": "AM-LA-PAZ-ESTE",
+      "nombre": "Alcaldía Municipal de La Paz Este"
+    },
+    "historial": [
+      {
+        "estado": "recibido",
+        "fecha": {
+          "$date": "2026-08-07T15:05:07.529Z"
+        },
+        "actor": "Andrea Rivera Rivera",
+        "comentario": null
+      },
+      {
+        "estado": "en_revision",
+        "fecha": {
+          "$date": "2026-08-08T12:05:07.529Z"
+        },
+        "actor": "Centro de atención",
+        "comentario": null
+      },
+      {
+        "estado": "asignado",
+        "fecha": {
+          "$date": "2026-08-09T13:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Paz Este",
+        "comentario": null
+      },
+      {
+        "estado": "en_proceso",
+        "fecha": {
+          "$date": "2026-08-10T00:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Paz Este",
+        "comentario": null
+      },
+      {
+        "estado": "resuelto",
+        "fecha": {
+          "$date": "2026-08-11T00:05:07.529Z"
+        },
+        "actor": "Alcaldía Municipal de La Paz Este",
+        "comentario": null
+      }
+    ],
+    "evidencias": [
+      {
+        "url": "https://fotos.reporteciudadano.sv/RC-2026-000020-0.jpg",
+        "tipo": "foto",
+        "fechaSubida": {
+          "$date": "2026-08-07T15:05:07.529Z"
+        }
+      }
+    ],
+    "apoyos": [
+      {
+        "$oid": "6ae6ba73af7333f46925ae19"
+      },
+      {
+        "$oid": "6ae6ba73af7333f46925ae13"
+      }
+    ],
+    "totalApoyos": 2,
+    "etiquetas": [
+      "salud",
+      "zancudos"
+    ],
+    "fechaCreacion": {
+      "$date": "2026-08-07T15:05:07.529Z"
+    },
+    "fechaActualizacion": {
+      "$date": "2026-08-11T00:05:07.529Z"
+    },
+    "fechaResolucion": {
+      "$date": "2026-08-11T00:05:07.529Z"
+    },
+    "calificacion": {
+      "puntaje": 4,
+      "comentario": null,
+      "fecha": {
+        "$date": "2026-08-11T00:05:07.529Z"
+      }
+    }
+  }
+]

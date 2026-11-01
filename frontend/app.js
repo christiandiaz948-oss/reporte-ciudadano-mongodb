@@ -190,10 +190,10 @@ function tablaSimple(filas, columnas, campoBarra = null) {
 async function cargarMetricas() {
   try {
     const [categorias, municipios, tiempos, etiquetas] = await Promise.all([
-      api("/analitica/por-categoria"),
-      api("/analitica/por-municipio?limite=10"),
-      api("/analitica/tiempos-resolucion?limite=10"),
-      api("/analitica/etiquetas?limite=10"),
+      api("/metricas/por-categoria"),
+      api("/metricas/por-municipio?limite=10"),
+      api("/metricas/tiempos-resolucion?limite=10"),
+      api("/metricas/etiquetas?limite=10"),
     ]);
     document.getElementById("metrica-categorias").innerHTML = tablaSimple(categorias,
       [["Categoría", "categoria"], ["Total", "total"], ["Abiertos", "abiertos"], ["Resueltos", "resueltos"]], "total");

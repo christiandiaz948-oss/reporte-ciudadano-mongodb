@@ -1,0 +1,337 @@
+[
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0b"
+    },
+    "dui": "86865468-1",
+    "nombre": "Ana Mejía Menjívar",
+    "email": "ciudadano1@correo.sv",
+    "telefono": "7328-7891",
+    "direccion": {
+      "departamento": "Cabañas",
+      "municipio": "Cabañas Oeste",
+      "colonia": "Colonia Las Margaritas"
+    },
+    "fechaRegistro": {
+      "$date": "2025-05-28T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 3,
+      "ultimoReporte": {
+        "$date": "2026-09-30T00:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0c"
+    },
+    "dui": "13160265-7",
+    "nombre": "José López García",
+    "email": "ciudadano2@correo.sv",
+    "telefono": "7111-9032",
+    "direccion": {
+      "departamento": "La Libertad",
+      "municipio": "La Libertad Sur",
+      "colonia": "Reparto Santa Fe"
+    },
+    "fechaRegistro": {
+      "$date": "2025-06-12T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 0,
+      "ultimoReporte": null
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0d"
+    },
+    "dui": "50512102-8",
+    "nombre": "Francisco Cruz Portillo",
+    "email": "ciudadano3@correo.sv",
+    "telefono": "7753-2250",
+    "direccion": {
+      "departamento": "San Salvador",
+      "municipio": "San Salvador Este",
+      "colonia": "Residencial Los Héroes"
+    },
+    "fechaRegistro": {
+      "$date": "2024-12-16T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 0,
+      "ultimoReporte": null
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0e"
+    },
+    "dui": "18909714-9",
+    "nombre": "Andrea Rivera Rivera",
+    "email": "ciudadano4@correo.sv",
+    "telefono": "7416-1405",
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Este",
+      "colonia": "Reparto Santa Fe"
+    },
+    "fechaRegistro": {
+      "$date": "2025-03-25T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 2,
+      "ultimoReporte": {
+        "$date": "2026-08-07T15:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0f"
+    },
+    "dui": "78613714-8",
+    "nombre": "Roberto Guardado López",
+    "email": "ciudadano5@correo.sv",
+    "telefono": "7610-2907",
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Sur",
+      "colonia": "Colonia Las Margaritas"
+    },
+    "fechaRegistro": {
+      "$date": "2025-03-08T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 4,
+      "ultimoReporte": {
+        "$date": "2026-10-03T15:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae10"
+    },
+    "dui": "64315788-8",
+    "nombre": "Óscar Cruz Guardado",
+    "email": "ciudadano6@correo.sv",
+    "telefono": "7630-1415",
+    "direccion": {
+      "departamento": "San Vicente",
+      "municipio": "San Vicente Norte",
+      "colonia": "Barrio El Centro"
+    },
+    "fechaRegistro": {
+      "$date": "2024-08-05T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 0,
+      "ultimoReporte": null
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae11"
+    },
+    "dui": "83524993-6",
+    "nombre": "María Menjívar García",
+    "email": "ciudadano7@correo.sv",
+    "telefono": "7581-3333",
+    "direccion": {
+      "departamento": "San Miguel",
+      "municipio": "San Miguel Centro",
+      "colonia": "Colonia Miramonte"
+    },
+    "fechaRegistro": {
+      "$date": "2024-07-19T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 2,
+      "ultimoReporte": {
+        "$date": "2026-10-26T05:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae12"
+    },
+    "dui": "73233523-4",
+    "nombre": "Ana Romero Aguilar",
+    "email": "ciudadano8@correo.sv",
+    "telefono": "7673-7587",
+    "direccion": {
+      "departamento": "San Miguel",
+      "municipio": "San Miguel Oeste",
+      "colonia": "Urbanización La Cima"
+    },
+    "fechaRegistro": {
+      "$date": "2024-12-21T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 1,
+      "ultimoReporte": {
+        "$date": "2026-05-17T14:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae13"
+    },
+    "dui": "27183296-4",
+    "nombre": "Óscar Aguilar Alvarado",
+    "email": "ciudadano9@correo.sv",
+    "telefono": "7951-5407",
+    "direccion": {
+      "departamento": "Cuscatlán",
+      "municipio": "Cuscatlán Norte",
+      "colonia": "Colonia Escalón"
+    },
+    "fechaRegistro": {
+      "$date": "2025-07-13T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 0,
+      "ultimoReporte": null
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae14"
+    },
+    "dui": "48309773-3",
+    "nombre": "Fátima Romero Menjívar",
+    "email": "ciudadano10@correo.sv",
+    "telefono": "7366-8955",
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Centro",
+      "colonia": "Colonia Las Margaritas"
+    },
+    "fechaRegistro": {
+      "$date": "2024-08-10T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 1,
+      "ultimoReporte": {
+        "$date": "2026-10-04T15:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae15"
+    },
+    "dui": "38932423-5",
+    "nombre": "Daniela Orellana Martínez",
+    "email": "ciudadano11@correo.sv",
+    "telefono": "7568-2611",
+    "direccion": {
+      "departamento": "La Unión",
+      "municipio": "La Unión Sur",
+      "colonia": "Urbanización La Cima"
+    },
+    "fechaRegistro": {
+      "$date": "2025-02-08T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 3,
+      "ultimoReporte": {
+        "$date": "2026-04-13T12:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae16"
+    },
+    "dui": "87046671-4",
+    "nombre": "Rosa Guardado Aguilar",
+    "email": "ciudadano12@correo.sv",
+    "telefono": "7610-7064",
+    "direccion": {
+      "departamento": "Santa Ana",
+      "municipio": "Santa Ana Norte",
+      "colonia": "Colonia Miramonte"
+    },
+    "fechaRegistro": {
+      "$date": "2024-09-10T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 2,
+      "ultimoReporte": {
+        "$date": "2026-09-13T04:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae17"
+    },
+    "dui": "12370664-0",
+    "nombre": "Daniela Rodríguez Romero",
+    "email": "ciudadano13@correo.sv",
+    "telefono": "7562-9955",
+    "direccion": {
+      "departamento": "Ahuachapán",
+      "municipio": "Ahuachapán Norte",
+      "colonia": "Colonia Miramonte"
+    },
+    "fechaRegistro": {
+      "$date": "2025-05-24T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 1,
+      "ultimoReporte": {
+        "$date": "2026-09-07T23:05:07.529Z"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae18"
+    },
+    "dui": "89721481-5",
+    "nombre": "Ana Martínez Orellana",
+    "email": "ciudadano14@correo.sv",
+    "telefono": "7258-1084",
+    "direccion": {
+      "departamento": "La Libertad",
+      "municipio": "La Libertad Oeste",
+      "colonia": "Colonia Las Margaritas"
+    },
+    "fechaRegistro": {
+      "$date": "2024-10-09T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 0,
+      "ultimoReporte": null
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae19"
+    },
+    "dui": "78911235-2",
+    "nombre": "Luis Orellana Flores",
+    "email": "ciudadano15@correo.sv",
+    "telefono": "7712-9269",
+    "direccion": {
+      "departamento": "La Paz",
+      "municipio": "La Paz Centro",
+      "colonia": "Residencial Los Héroes"
+    },
+    "fechaRegistro": {
+      "$date": "2025-02-26T04:05:07.529Z"
+    },
+    "estadisticas": {
+      "totalReportes": 1,
+      "ultimoReporte": {
+        "$date": "2026-09-20T15:05:07.529Z"
+      }
+    }
+  }
+]

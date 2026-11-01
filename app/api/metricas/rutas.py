@@ -3,7 +3,7 @@ from fastapi import APIRouter, Query
 
 from app.db import db
 
-router = APIRouter(prefix="/analitica", tags=["Analítica (Aggregation Pipeline)"])
+router = APIRouter(prefix="/metricas", tags=["Métricas (Aggregation Pipeline)"])
 
 # Cuenta 1 si el reporte sigue abierto (no está resuelto ni rechazado), 0 si no
 CONTAR_ABIERTOS = {"$sum": {"$cond": [{"$in": ["$estado", ["resuelto", "rechazado"]]}, 0, 1]}}

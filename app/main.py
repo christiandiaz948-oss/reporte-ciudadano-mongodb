@@ -5,9 +5,12 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pymongo.errors import PyMongoError, WriteError
 
+from app.api.ciudadanos import rutas as ciudadanos
+from app.api.instituciones import rutas as instituciones
+from app.api.metricas import rutas as metricas
+from app.api.reportes import rutas as reportes
 from app.catalogos import CATEGORIAS, DEPARTAMENTOS, ESTADOS, PRIORIDADES, TRANSICIONES
 from app.db import db
-from app.routers import analitica, ciudadanos, instituciones, reportes
 
 CARPETA_FRONTEND = Path(__file__).resolve().parent.parent / "frontend"
 
@@ -24,7 +27,7 @@ app = FastAPI(
 app.include_router(ciudadanos.router, prefix="/api")
 app.include_router(instituciones.router, prefix="/api")
 app.include_router(reportes.router, prefix="/api")
-app.include_router(analitica.router, prefix="/api")
+app.include_router(metricas.router, prefix="/api")
 
 
 @app.exception_handler(WriteError)

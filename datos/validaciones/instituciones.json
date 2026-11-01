@@ -1,0 +1,86 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "codigo",
+      "nombre",
+      "tipo",
+      "categoriasAtendidas",
+      "cobertura",
+      "activa"
+    ],
+    "properties": {
+      "codigo": {
+        "bsonType": "string",
+        "minLength": 2,
+        "maxLength": 40
+      },
+      "nombre": {
+        "bsonType": "string",
+        "minLength": 3,
+        "maxLength": 150
+      },
+      "tipo": {
+        "enum": [
+          "alcaldia",
+          "autonoma",
+          "ministerio",
+          "distribuidora",
+          "emergencias"
+        ]
+      },
+      "categoriasAtendidas": {
+        "bsonType": "array",
+        "minItems": 1,
+        "items": {
+          "enum": [
+            "bache",
+            "alumbrado",
+            "basura",
+            "agua_potable",
+            "alcantarillado",
+            "arbol_caido",
+            "semaforo",
+            "seguridad_vial",
+            "ruido",
+            "otro"
+          ]
+        }
+      },
+      "cobertura": {
+        "bsonType": "object",
+        "required": [
+          "nacional",
+          "departamentos",
+          "municipios"
+        ],
+        "properties": {
+          "nacional": {
+            "bsonType": "bool"
+          },
+          "departamentos": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "municipios": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          }
+        }
+      },
+      "contacto": {
+        "bsonType": [
+          "object",
+          "null"
+        ]
+      },
+      "activa": {
+        "bsonType": "bool"
+      }
+    }
+  }
+}

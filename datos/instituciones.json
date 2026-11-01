@@ -1,0 +1,1575 @@
+[
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add2"
+    },
+    "codigo": "AM-AHUACHAPAN-NORTE",
+    "nombre": "Alcaldía Municipal de Ahuachapán Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Ahuachapán"
+      ],
+      "municipios": [
+        "Ahuachapán Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@ahuachapan-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add3"
+    },
+    "codigo": "AM-AHUACHAPAN-CENTRO",
+    "nombre": "Alcaldía Municipal de Ahuachapán Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Ahuachapán"
+      ],
+      "municipios": [
+        "Ahuachapán Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@ahuachapan-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add4"
+    },
+    "codigo": "AM-AHUACHAPAN-SUR",
+    "nombre": "Alcaldía Municipal de Ahuachapán Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Ahuachapán"
+      ],
+      "municipios": [
+        "Ahuachapán Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@ahuachapan-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add5"
+    },
+    "codigo": "AM-SANTA-ANA-NORTE",
+    "nombre": "Alcaldía Municipal de Santa Ana Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Santa Ana"
+      ],
+      "municipios": [
+        "Santa Ana Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@santa-ana-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add6"
+    },
+    "codigo": "AM-SANTA-ANA-CENTRO",
+    "nombre": "Alcaldía Municipal de Santa Ana Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Santa Ana"
+      ],
+      "municipios": [
+        "Santa Ana Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@santa-ana-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add7"
+    },
+    "codigo": "AM-SANTA-ANA-ESTE",
+    "nombre": "Alcaldía Municipal de Santa Ana Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Santa Ana"
+      ],
+      "municipios": [
+        "Santa Ana Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@santa-ana-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add8"
+    },
+    "codigo": "AM-SANTA-ANA-OESTE",
+    "nombre": "Alcaldía Municipal de Santa Ana Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Santa Ana"
+      ],
+      "municipios": [
+        "Santa Ana Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@santa-ana-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925add9"
+    },
+    "codigo": "AM-SONSONATE-NORTE",
+    "nombre": "Alcaldía Municipal de Sonsonate Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Sonsonate"
+      ],
+      "municipios": [
+        "Sonsonate Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@sonsonate-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adda"
+    },
+    "codigo": "AM-SONSONATE-CENTRO",
+    "nombre": "Alcaldía Municipal de Sonsonate Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Sonsonate"
+      ],
+      "municipios": [
+        "Sonsonate Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@sonsonate-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925addb"
+    },
+    "codigo": "AM-SONSONATE-ESTE",
+    "nombre": "Alcaldía Municipal de Sonsonate Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Sonsonate"
+      ],
+      "municipios": [
+        "Sonsonate Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@sonsonate-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925addc"
+    },
+    "codigo": "AM-SONSONATE-OESTE",
+    "nombre": "Alcaldía Municipal de Sonsonate Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Sonsonate"
+      ],
+      "municipios": [
+        "Sonsonate Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@sonsonate-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925addd"
+    },
+    "codigo": "AM-CHALATENANGO-NORTE",
+    "nombre": "Alcaldía Municipal de Chalatenango Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Chalatenango"
+      ],
+      "municipios": [
+        "Chalatenango Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@chalatenango-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adde"
+    },
+    "codigo": "AM-CHALATENANGO-CENTRO",
+    "nombre": "Alcaldía Municipal de Chalatenango Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Chalatenango"
+      ],
+      "municipios": [
+        "Chalatenango Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@chalatenango-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925addf"
+    },
+    "codigo": "AM-CHALATENANGO-SUR",
+    "nombre": "Alcaldía Municipal de Chalatenango Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Chalatenango"
+      ],
+      "municipios": [
+        "Chalatenango Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@chalatenango-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade0"
+    },
+    "codigo": "AM-LA-LIBERTAD-NORTE",
+    "nombre": "Alcaldía Municipal de La Libertad Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade1"
+    },
+    "codigo": "AM-LA-LIBERTAD-CENTRO",
+    "nombre": "Alcaldía Municipal de La Libertad Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade2"
+    },
+    "codigo": "AM-LA-LIBERTAD-OESTE",
+    "nombre": "Alcaldía Municipal de La Libertad Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade3"
+    },
+    "codigo": "AM-LA-LIBERTAD-ESTE",
+    "nombre": "Alcaldía Municipal de La Libertad Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade4"
+    },
+    "codigo": "AM-LA-LIBERTAD-COSTA",
+    "nombre": "Alcaldía Municipal de La Libertad Costa",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Costa"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-costa.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade5"
+    },
+    "codigo": "AM-LA-LIBERTAD-SUR",
+    "nombre": "Alcaldía Municipal de La Libertad Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad"
+      ],
+      "municipios": [
+        "La Libertad Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-libertad-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade6"
+    },
+    "codigo": "AM-SAN-SALVADOR-NORTE",
+    "nombre": "Alcaldía Municipal de San Salvador Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador"
+      ],
+      "municipios": [
+        "San Salvador Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-salvador-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade7"
+    },
+    "codigo": "AM-SAN-SALVADOR-OESTE",
+    "nombre": "Alcaldía Municipal de San Salvador Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador"
+      ],
+      "municipios": [
+        "San Salvador Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-salvador-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade8"
+    },
+    "codigo": "AM-SAN-SALVADOR-ESTE",
+    "nombre": "Alcaldía Municipal de San Salvador Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador"
+      ],
+      "municipios": [
+        "San Salvador Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-salvador-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ade9"
+    },
+    "codigo": "AM-SAN-SALVADOR-CENTRO",
+    "nombre": "Alcaldía Municipal de San Salvador Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador"
+      ],
+      "municipios": [
+        "San Salvador Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-salvador-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adea"
+    },
+    "codigo": "AM-SAN-SALVADOR-SUR",
+    "nombre": "Alcaldía Municipal de San Salvador Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador"
+      ],
+      "municipios": [
+        "San Salvador Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-salvador-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adeb"
+    },
+    "codigo": "AM-CUSCATLAN-NORTE",
+    "nombre": "Alcaldía Municipal de Cuscatlán Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Cuscatlán"
+      ],
+      "municipios": [
+        "Cuscatlán Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@cuscatlan-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adec"
+    },
+    "codigo": "AM-CUSCATLAN-SUR",
+    "nombre": "Alcaldía Municipal de Cuscatlán Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Cuscatlán"
+      ],
+      "municipios": [
+        "Cuscatlán Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@cuscatlan-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925aded"
+    },
+    "codigo": "AM-LA-PAZ-OESTE",
+    "nombre": "Alcaldía Municipal de La Paz Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Paz"
+      ],
+      "municipios": [
+        "La Paz Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-paz-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adee"
+    },
+    "codigo": "AM-LA-PAZ-CENTRO",
+    "nombre": "Alcaldía Municipal de La Paz Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Paz"
+      ],
+      "municipios": [
+        "La Paz Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-paz-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adef"
+    },
+    "codigo": "AM-LA-PAZ-ESTE",
+    "nombre": "Alcaldía Municipal de La Paz Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Paz"
+      ],
+      "municipios": [
+        "La Paz Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-paz-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf0"
+    },
+    "codigo": "AM-CABANAS-ESTE",
+    "nombre": "Alcaldía Municipal de Cabañas Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Cabañas"
+      ],
+      "municipios": [
+        "Cabañas Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@cabanas-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf1"
+    },
+    "codigo": "AM-CABANAS-OESTE",
+    "nombre": "Alcaldía Municipal de Cabañas Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Cabañas"
+      ],
+      "municipios": [
+        "Cabañas Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@cabanas-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf2"
+    },
+    "codigo": "AM-SAN-VICENTE-NORTE",
+    "nombre": "Alcaldía Municipal de San Vicente Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Vicente"
+      ],
+      "municipios": [
+        "San Vicente Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-vicente-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf3"
+    },
+    "codigo": "AM-SAN-VICENTE-SUR",
+    "nombre": "Alcaldía Municipal de San Vicente Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Vicente"
+      ],
+      "municipios": [
+        "San Vicente Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-vicente-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf4"
+    },
+    "codigo": "AM-USULUTAN-NORTE",
+    "nombre": "Alcaldía Municipal de Usulután Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Usulután"
+      ],
+      "municipios": [
+        "Usulután Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@usulutan-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf5"
+    },
+    "codigo": "AM-USULUTAN-ESTE",
+    "nombre": "Alcaldía Municipal de Usulután Este",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Usulután"
+      ],
+      "municipios": [
+        "Usulután Este"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@usulutan-este.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf6"
+    },
+    "codigo": "AM-USULUTAN-OESTE",
+    "nombre": "Alcaldía Municipal de Usulután Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Usulután"
+      ],
+      "municipios": [
+        "Usulután Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@usulutan-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf7"
+    },
+    "codigo": "AM-SAN-MIGUEL-NORTE",
+    "nombre": "Alcaldía Municipal de San Miguel Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Miguel"
+      ],
+      "municipios": [
+        "San Miguel Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-miguel-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf8"
+    },
+    "codigo": "AM-SAN-MIGUEL-CENTRO",
+    "nombre": "Alcaldía Municipal de San Miguel Centro",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Miguel"
+      ],
+      "municipios": [
+        "San Miguel Centro"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-miguel-centro.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adf9"
+    },
+    "codigo": "AM-SAN-MIGUEL-OESTE",
+    "nombre": "Alcaldía Municipal de San Miguel Oeste",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Miguel"
+      ],
+      "municipios": [
+        "San Miguel Oeste"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@san-miguel-oeste.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adfa"
+    },
+    "codigo": "AM-MORAZAN-NORTE",
+    "nombre": "Alcaldía Municipal de Morazán Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Morazán"
+      ],
+      "municipios": [
+        "Morazán Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@morazan-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adfb"
+    },
+    "codigo": "AM-MORAZAN-SUR",
+    "nombre": "Alcaldía Municipal de Morazán Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Morazán"
+      ],
+      "municipios": [
+        "Morazán Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@morazan-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adfc"
+    },
+    "codigo": "AM-LA-UNION-NORTE",
+    "nombre": "Alcaldía Municipal de La Unión Norte",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Unión"
+      ],
+      "municipios": [
+        "La Unión Norte"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-union-norte.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adfd"
+    },
+    "codigo": "AM-LA-UNION-SUR",
+    "nombre": "Alcaldía Municipal de La Unión Sur",
+    "tipo": "alcaldia",
+    "categoriasAtendidas": [
+      "bache",
+      "basura",
+      "arbol_caido",
+      "ruido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Unión"
+      ],
+      "municipios": [
+        "La Unión Sur"
+      ]
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "atencion@la-union-sur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adfe"
+    },
+    "codigo": "ANDA",
+    "nombre": "Administración Nacional de Acueductos y Alcantarillados",
+    "tipo": "autonoma",
+    "categoriasAtendidas": [
+      "agua_potable",
+      "alcantarillado"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@anda.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925adff"
+    },
+    "codigo": "MOP",
+    "nombre": "Ministerio de Obras Públicas y de Transporte",
+    "tipo": "ministerio",
+    "categoriasAtendidas": [
+      "bache"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@mop.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae00"
+    },
+    "codigo": "FOVIAL",
+    "nombre": "Fondo de Conservación Vial",
+    "tipo": "autonoma",
+    "categoriasAtendidas": [
+      "bache"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@fovial.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae01"
+    },
+    "codigo": "VMT",
+    "nombre": "Viceministerio de Transporte",
+    "tipo": "ministerio",
+    "categoriasAtendidas": [
+      "semaforo",
+      "seguridad_vial"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@vmt.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae02"
+    },
+    "codigo": "PNC-TRANSITO",
+    "nombre": "PNC - División de Tránsito Terrestre",
+    "tipo": "ministerio",
+    "categoriasAtendidas": [
+      "seguridad_vial",
+      "ruido"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@pnc-transito.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae03"
+    },
+    "codigo": "MARN",
+    "nombre": "Ministerio de Medio Ambiente y Recursos Naturales",
+    "tipo": "ministerio",
+    "categoriasAtendidas": [
+      "basura",
+      "ruido"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@marn.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae04"
+    },
+    "codigo": "BOMBEROS",
+    "nombre": "Cuerpo de Bomberos de El Salvador",
+    "tipo": "emergencias",
+    "categoriasAtendidas": [
+      "arbol_caido"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@bomberos.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae05"
+    },
+    "codigo": "PROTECCION-CIVIL",
+    "nombre": "Dirección General de Protección Civil",
+    "tipo": "emergencias",
+    "categoriasAtendidas": [
+      "arbol_caido",
+      "otro"
+    ],
+    "cobertura": {
+      "nacional": true,
+      "departamentos": [],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@proteccion-civil.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae06"
+    },
+    "codigo": "CAESS",
+    "nombre": "CAESS - Distribuidora eléctrica",
+    "tipo": "distribuidora",
+    "categoriasAtendidas": [
+      "alumbrado"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Salvador",
+        "Chalatenango",
+        "Cuscatlán",
+        "Cabañas"
+      ],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@caess.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae07"
+    },
+    "codigo": "DELSUR",
+    "nombre": "DELSUR - Distribuidora eléctrica",
+    "tipo": "distribuidora",
+    "categoriasAtendidas": [
+      "alumbrado"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "La Libertad",
+        "La Paz",
+        "San Vicente"
+      ],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@delsur.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae08"
+    },
+    "codigo": "AES-CLESA",
+    "nombre": "AES CLESA - Distribuidora eléctrica",
+    "tipo": "distribuidora",
+    "categoriasAtendidas": [
+      "alumbrado"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Santa Ana",
+        "Ahuachapán",
+        "Sonsonate"
+      ],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@aes-clesa.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae09"
+    },
+    "codigo": "EEO",
+    "nombre": "EEO - Empresa Eléctrica de Oriente",
+    "tipo": "distribuidora",
+    "categoriasAtendidas": [
+      "alumbrado"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "San Miguel",
+        "Morazán",
+        "La Unión"
+      ],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@eeo.gob.sv"
+    },
+    "activa": true
+  },
+  {
+    "_id": {
+      "$oid": "6ae6ba73af7333f46925ae0a"
+    },
+    "codigo": "DEUSEM",
+    "nombre": "DEUSEM - Distribuidora eléctrica",
+    "tipo": "distribuidora",
+    "categoriasAtendidas": [
+      "alumbrado"
+    ],
+    "cobertura": {
+      "nacional": false,
+      "departamentos": [
+        "Usulután"
+      ],
+      "municipios": []
+    },
+    "contacto": {
+      "telefono": null,
+      "email": "reportes@deusem.gob.sv"
+    },
+    "activa": true
+  }
+]

@@ -1311,13 +1311,13 @@
         }
       }
     },
-    "/api/analitica/por-categoria": {
+    "/api/metricas/por-categoria": {
       "get": {
         "tags": [
-          "Analítica (Aggregation Pipeline)"
+          "Métricas (Aggregation Pipeline)"
         ],
         "summary": "Total de reportes, abiertos y resueltos por categoría",
-        "operationId": "por_categoria_api_analitica_por_categoria_get",
+        "operationId": "por_categoria_api_metricas_por_categoria_get",
         "parameters": [
           {
             "name": "departamento",
@@ -1358,13 +1358,13 @@
         }
       }
     },
-    "/api/analitica/por-municipio": {
+    "/api/metricas/por-municipio": {
       "get": {
         "tags": [
-          "Analítica (Aggregation Pipeline)"
+          "Métricas (Aggregation Pipeline)"
         ],
         "summary": "Municipios con más reportes abiertos",
-        "operationId": "por_municipio_api_analitica_por_municipio_get",
+        "operationId": "por_municipio_api_metricas_por_municipio_get",
         "parameters": [
           {
             "name": "departamento",
@@ -1417,13 +1417,13 @@
         }
       }
     },
-    "/api/analitica/tiempos-resolucion": {
+    "/api/metricas/tiempos-resolucion": {
       "get": {
         "tags": [
-          "Analítica (Aggregation Pipeline)"
+          "Métricas (Aggregation Pipeline)"
         ],
         "summary": "Días promedio de resolución por institución ($lookup + $unwind)",
-        "operationId": "tiempos_resolucion_api_analitica_tiempos_resolucion_get",
+        "operationId": "tiempos_resolucion_api_metricas_tiempos_resolucion_get",
         "parameters": [
           {
             "name": "limite",
@@ -1460,13 +1460,13 @@
         }
       }
     },
-    "/api/analitica/etiquetas": {
+    "/api/metricas/etiquetas": {
       "get": {
         "tags": [
-          "Analítica (Aggregation Pipeline)"
+          "Métricas (Aggregation Pipeline)"
         ],
         "summary": "Etiquetas más frecuentes en reportes abiertos ($unwind de un array)",
-        "operationId": "etiquetas_frecuentes_api_analitica_etiquetas_get",
+        "operationId": "etiquetas_frecuentes_api_metricas_etiquetas_get",
         "parameters": [
           {
             "name": "limite",
