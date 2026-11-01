@@ -62,8 +62,6 @@ def tiempos_resolucion(limite: int = Query(10, ge=1, le=57)):
         }},
         # 3. Promedio de horas por institución
         {"$group": {"_id": "$institucionId", "resueltos": {"$sum": 1}, "promedioHoras": {"$avg": "$horas"}}},
-        # Solo instituciones con al menos 3 casos, para que el promedio tenga sentido
-        {"$match": {"resueltos": {"$gte": 3}}},
         # 4. Traer los datos de la institución desde su colección (como un JOIN)
         {"$lookup": {"from": "instituciones", "localField": "_id", "foreignField": "_id", "as": "institucion"}},
         # 5. $lookup devuelve un arreglo; $unwind lo convierte en un objeto

@@ -35,7 +35,6 @@ db.reportes.aggregate([
   { $project: { institucionId: "$institucion._id",
                 horas: { $dateDiff: { startDate: "$fechaCreacion", endDate: "$fechaResolucion", unit: "hour" } } } },
   { $group: { _id: "$institucionId", resueltos: { $sum: 1 }, promedioHoras: { $avg: "$horas" } } },
-  { $match: { resueltos: { $gte: 3 } } },
   { $lookup: { from: "instituciones", localField: "_id", foreignField: "_id", as: "institucion" } },
   { $unwind: "$institucion" },
   { $project: { _id: 0, institucion: "$institucion.nombre", resueltos: 1,

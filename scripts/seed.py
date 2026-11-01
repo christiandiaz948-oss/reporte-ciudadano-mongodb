@@ -1,8 +1,8 @@
 """Carga datos de prueba ficticios:
 
   - 57 instituciones (44 alcaldías + ANDA, MOP, VMT, distribuidoras eléctricas, etc.)
-  - 100 ciudadanos
-  - 400 reportes con historial, evidencias, apoyos y calificaciones
+  - 15 ciudadanos
+  - 20 reportes con historial, evidencias, apoyos y calificaciones
 
 ATENCIÓN: borra y vuelve a crear las colecciones. Uso:  python -m scripts.seed
 """
@@ -133,7 +133,7 @@ PLANTILLAS = {
 FLUJO = ["recibido", "en_revision", "asignado", "en_proceso", "resuelto"]
 # Probabilidad de cada estado final (porcentajes aproximados)
 ESTADOS_FINALES = ["recibido", "en_revision", "asignado", "en_proceso", "resuelto", "rechazado"]
-PESOS_ESTADO = [3, 6, 12, 9, 63, 7]
+PESOS_ESTADO = [10, 10, 15, 15, 40, 10]
 # Las instituciones nacionales tardan más que las locales (multiplica las horas de cada paso)
 LENTITUD = {"alcaldia": 1, "distribuidora": 1, "emergencias": 0.5, "autonoma": 2, "ministerio": 2.5}
 
@@ -171,7 +171,7 @@ def generar_reportes(cantidad: int, ciudadanos: list[dict], tipo_institucion: di
 
         # Otros ciudadanos que apoyan el reporte (sin incluir al autor)
         otros = [c["_id"] for c in ciudadanos if c["_id"] != autor["_id"]]
-        apoyos = random.sample(otros, random.randint(0, 15))
+        apoyos = random.sample(otros, random.randint(0, 5))
 
         folio = f"RC-{creado.year}-{i:06d}"
         reporte = {
@@ -224,8 +224,8 @@ def main() -> None:
     db.instituciones.insert_many(instituciones)  # insert_many agrega el _id a cada diccionario
     tipo_institucion = {inst["_id"]: inst["tipo"] for inst in instituciones}
 
-    ciudadanos = generar_ciudadanos(100)
-    reportes = generar_reportes(400, ciudadanos, tipo_institucion)
+    ciudadanos = generar_ciudadanos(15)
+    reportes = generar_reportes(20, ciudadanos, tipo_institucion)
     db.ciudadanos.insert_many(ciudadanos)  # ya llevan sus estadísticas calculadas
     db.reportes.insert_many(reportes)
     db.contadores.insert_one({"_id": "folio_reportes", "secuencia": len(reportes)})

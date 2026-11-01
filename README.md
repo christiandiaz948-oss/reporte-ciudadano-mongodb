@@ -77,8 +77,8 @@ Después de levantar la API:
 | Colección | Documentos | Contenido |
 |---|---|---|
 | `instituciones` | 57 | 44 alcaldías de distrito (división 2024), ANDA, MOP, FOVIAL, VMT, PNC, MARN, Bomberos, Protección Civil, CAESS, DELSUR, AES CLESA, EEO y DEUSEM |
-| `ciudadanos` | 100 | DUI, correo, teléfono y dirección |
-| `reportes` | 400 | Historial de estados, evidencias, apoyos y calificaciones, distribuidos en los últimos 12 meses |
+| `ciudadanos` | 15 | DUI, correo, teléfono y dirección |
+| `reportes` | 20 | Historial de estados, evidencias, apoyos y calificaciones, distribuidos en los últimos 12 meses |
 
 Los datos son ficticios. Se generan con una semilla fija, así que cada carga produce los mismos datos.
 
