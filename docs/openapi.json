@@ -1,0 +1,2588 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Sistema de Reporte Ciudadano",
+    "description": "API para que la ciudadanía reporte problemas urbanos (baches, alumbrado, basura, agua...) y las instituciones los atiendan. Base de datos: **MongoDB**.\n\nProyecto final — Bases de Datos II (no relacionales), Universidad Evangélica de El Salvador. Grupo 2.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/ciudadanos": {
+      "post": {
+        "tags": [
+          "Ciudadanos"
+        ],
+        "summary": "Registrar ciudadano",
+        "operationId": "crear_ciudadano_api_ciudadanos_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CiudadanoCrear"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Ciudadanos"
+        ],
+        "summary": "Listar ciudadanos con filtros y paginación",
+        "operationId": "listar_ciudadanos_api_ciudadanos_get",
+        "parameters": [
+          {
+            "name": "departamento",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Departamento"
+            }
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Municipio"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Búsqueda parcial, sin distinguir mayúsculas ($regex)",
+              "title": "Nombre"
+            },
+            "description": "Búsqueda parcial, sin distinguir mayúsculas ($regex)"
+          },
+          {
+            "name": "min_reportes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Mínimo de reportes creados ($gte)",
+              "title": "Min Reportes"
+            },
+            "description": "Mínimo de reportes creados ($gte)"
+          },
+          {
+            "name": "orden",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(nombre|fechaRegistro|estadisticas.totalReportes)$",
+              "default": "nombre",
+              "title": "Orden"
+            }
+          },
+          {
+            "name": "direccion_orden",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(asc|desc)$",
+              "default": "asc",
+              "title": "Direccion Orden"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Pagina"
+            }
+          },
+          {
+            "name": "tamano",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Tamano"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ciudadanos/{ciudadano_id}": {
+      "get": {
+        "tags": [
+          "Ciudadanos"
+        ],
+        "summary": "Obtener ciudadano",
+        "operationId": "obtener_ciudadano_api_ciudadanos__ciudadano_id__get",
+        "parameters": [
+          {
+            "name": "ciudadano_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ciudadano Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Ciudadanos"
+        ],
+        "summary": "Actualizar datos del ciudadano ($set)",
+        "operationId": "actualizar_ciudadano_api_ciudadanos__ciudadano_id__patch",
+        "parameters": [
+          {
+            "name": "ciudadano_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ciudadano Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CiudadanoActualizar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ciudadanos/{ciudadano_id}/reportes": {
+      "get": {
+        "tags": [
+          "Ciudadanos"
+        ],
+        "summary": "Reportes creados por un ciudadano",
+        "operationId": "reportes_del_ciudadano_api_ciudadanos__ciudadano_id__reportes_get",
+        "parameters": [
+          {
+            "name": "ciudadano_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ciudadano Id"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Pagina"
+            }
+          },
+          {
+            "name": "tamano",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Tamano"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/instituciones": {
+      "post": {
+        "tags": [
+          "Instituciones"
+        ],
+        "summary": "Registrar institución",
+        "operationId": "crear_institucion_api_instituciones_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstitucionCrear"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Instituciones"
+        ],
+        "summary": "Listar instituciones",
+        "operationId": "listar_instituciones_api_instituciones_get",
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "alcaldia",
+                    "autonoma",
+                    "ministerio",
+                    "distribuidora",
+                    "emergencias"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tipo"
+            }
+          },
+          {
+            "name": "categoria",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "bache",
+                    "alumbrado",
+                    "basura",
+                    "agua_potable",
+                    "alcantarillado",
+                    "arbol_caido",
+                    "semaforo",
+                    "seguridad_vial",
+                    "ruido",
+                    "otro"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Instituciones que atienden esta categoría",
+              "title": "Categoria"
+            },
+            "description": "Instituciones que atienden esta categoría"
+          },
+          {
+            "name": "departamento",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Con cobertura en el departamento (o nacional)",
+              "title": "Departamento"
+            },
+            "description": "Con cobertura en el departamento (o nacional)"
+          },
+          {
+            "name": "activa",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Activa"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Pagina"
+            }
+          },
+          {
+            "name": "tamano",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Tamano"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/instituciones/{institucion_id}": {
+      "get": {
+        "tags": [
+          "Instituciones"
+        ],
+        "summary": "Obtener institución",
+        "operationId": "obtener_institucion_api_instituciones__institucion_id__get",
+        "parameters": [
+          {
+            "name": "institucion_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Institucion Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Instituciones"
+        ],
+        "summary": "Actualizar institución",
+        "operationId": "actualizar_institucion_api_instituciones__institucion_id__patch",
+        "parameters": [
+          {
+            "name": "institucion_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Institucion Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstitucionActualizar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Crear reporte (asigna institución automáticamente)",
+        "operationId": "crear_reporte_api_reportes_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReporteCrear"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Buscar reportes con filtros avanzados, orden y paginación",
+        "operationId": "listar_reportes_api_reportes_get",
+        "parameters": [
+          {
+            "name": "estado",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "recibido",
+                      "en_revision",
+                      "asignado",
+                      "en_proceso",
+                      "resuelto",
+                      "rechazado"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Uno o varios ($in)",
+              "title": "Estado"
+            },
+            "description": "Uno o varios ($in)"
+          },
+          {
+            "name": "categoria",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "bache",
+                      "alumbrado",
+                      "basura",
+                      "agua_potable",
+                      "alcantarillado",
+                      "arbol_caido",
+                      "semaforo",
+                      "seguridad_vial",
+                      "ruido",
+                      "otro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Una o varias ($in)",
+              "title": "Categoria"
+            },
+            "description": "Una o varias ($in)"
+          },
+          {
+            "name": "prioridad",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "baja",
+                      "media",
+                      "alta",
+                      "critica"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Prioridad"
+            }
+          },
+          {
+            "name": "abiertos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "true = no resueltos ni rechazados ($nin)",
+              "title": "Abiertos"
+            },
+            "description": "true = no resueltos ni rechazados ($nin)"
+          },
+          {
+            "name": "urgentes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Críticos O con 10+ apoyos ($or)",
+              "title": "Urgentes"
+            },
+            "description": "Críticos O con 10+ apoyos ($or)"
+          },
+          {
+            "name": "departamento",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Departamento"
+            }
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Municipio"
+            }
+          },
+          {
+            "name": "institucion_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Institucion Id"
+            }
+          },
+          {
+            "name": "sin_institucion",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Reportes sin institución asignada",
+              "title": "Sin Institucion"
+            },
+            "description": "Reportes sin institución asignada"
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Fecha de creación desde ($gte)",
+              "title": "Desde"
+            },
+            "description": "Fecha de creación desde ($gte)"
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Fecha de creación hasta ($lte)",
+              "title": "Hasta"
+            },
+            "description": "Fecha de creación hasta ($lte)"
+          },
+          {
+            "name": "min_apoyos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Mínimo de apoyos ($gte)",
+              "title": "Min Apoyos"
+            },
+            "description": "Mínimo de apoyos ($gte)"
+          },
+          {
+            "name": "etiquetas",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Debe tener TODAS ($all)",
+              "title": "Etiquetas"
+            },
+            "description": "Debe tener TODAS ($all)"
+          },
+          {
+            "name": "con_evidencia",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Con al menos una evidencia ($exists sobre el índice 0)",
+              "title": "Con Evidencia"
+            },
+            "description": "Con al menos una evidencia ($exists sobre el índice 0)"
+          },
+          {
+            "name": "calificacion_max",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 5,
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Calificados con puntaje <= N (dot notation en subdocumento)",
+              "title": "Calificacion Max"
+            },
+            "description": "Calificados con puntaje <= N (dot notation en subdocumento)"
+          },
+          {
+            "name": "texto",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Búsqueda de texto completo en título/descripción ($text)",
+              "title": "Texto"
+            },
+            "description": "Búsqueda de texto completo en título/descripción ($text)"
+          },
+          {
+            "name": "orden",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(fechaCreacion|fechaActualizacion|totalApoyos|nivelPrioridad)$",
+              "default": "fechaCreacion",
+              "title": "Orden"
+            }
+          },
+          {
+            "name": "direccion_orden",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(asc|desc)$",
+              "default": "desc",
+              "title": "Direccion Orden"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Pagina"
+            }
+          },
+          {
+            "name": "tamano",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 10,
+              "title": "Tamano"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/estado": {
+      "patch": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Cambiar estado (valida la máquina de estados)",
+        "operationId": "cambiar_estado_api_reportes__reporte_id__estado_patch",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambioEstado"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/institucion": {
+      "patch": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Reasignar institución manualmente",
+        "operationId": "asignar_institucion_api_reportes__reporte_id__institucion_patch",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AsignarInstitucion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/apoyos": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Apoyar un reporte ('a mí también me afecta')",
+        "operationId": "apoyar_api_reportes__reporte_id__apoyos_post",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApoyoIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/apoyos/{ciudadano_id}": {
+      "delete": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Retirar apoyo ($pull)",
+        "operationId": "retirar_apoyo_api_reportes__reporte_id__apoyos__ciudadano_id__delete",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          },
+          {
+            "name": "ciudadano_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ciudadano Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/evidencias": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Agregar evidencia (máx. 10)",
+        "operationId": "agregar_evidencia_api_reportes__reporte_id__evidencias_post",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EvidenciaIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}/calificacion": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Calificar la atención (solo autor y reporte resuelto)",
+        "operationId": "calificar_api_reportes__reporte_id__calificacion_post",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalificacionIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/{reporte_id}": {
+      "delete": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Eliminar reporte (solo si sigue 'recibido')",
+        "operationId": "eliminar_reporte_api_reportes__reporte_id__delete",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Detalle del reporte (por _id o folio) con datos del ciudadano",
+        "operationId": "obtener_reporte_api_reportes__reporte_id__get",
+        "parameters": [
+          {
+            "name": "reporte_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reporte Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reportes/cercanos": {
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Reportes cercanos a un punto ($nearSphere, índice 2dsphere)",
+        "operationId": "reportes_cercanos_api_reportes_cercanos_get",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 14.5,
+              "minimum": 13.1,
+              "examples": [
+                13.6989
+              ],
+              "title": "Lat"
+            }
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": -87.6,
+              "minimum": -90.2,
+              "examples": [
+                -89.1914
+              ],
+              "title": "Lng"
+            }
+          },
+          {
+            "name": "radio_m",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50000,
+              "minimum": 50,
+              "description": "Radio en metros",
+              "default": 2000,
+              "title": "Radio M"
+            },
+            "description": "Radio en metros"
+          },
+          {
+            "name": "solo_abiertos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Solo Abiertos"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/resumen": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Tablero general ($facet: varios agrupamientos en una sola consulta)",
+        "operationId": "resumen_api_analitica_resumen_get",
+        "parameters": [
+          {
+            "name": "departamento",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Departamento"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Desde"
+            }
+          },
+          {
+            "name": "hasta",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hasta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/por-municipio": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Ranking de municipios por reportes abiertos",
+        "operationId": "por_municipio_api_analitica_por_municipio_get",
+        "parameters": [
+          {
+            "name": "departamento",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Departamento"
+            }
+          },
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 44,
+              "minimum": 1,
+              "default": 15,
+              "title": "Limite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/tiempos-resolucion": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Tiempo promedio de resolución por institución ($group + $lookup + $unwind)",
+        "operationId": "tiempos_resolucion_api_analitica_tiempos_resolucion_get",
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filtrar por tipo de institución (después del $lookup)",
+              "title": "Tipo"
+            },
+            "description": "Filtrar por tipo de institución (después del $lookup)"
+          },
+          {
+            "name": "min_resueltos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Mínimo de casos para aparecer en el ranking",
+              "default": 3,
+              "title": "Min Resueltos"
+            },
+            "description": "Mínimo de casos para aparecer en el ranking"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/tendencia-mensual": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Reportes por mes y categoría (dos $group encadenados)",
+        "operationId": "tendencia_mensual_api_analitica_tendencia_mensual_get",
+        "parameters": [
+          {
+            "name": "meses",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 24,
+              "minimum": 1,
+              "default": 12,
+              "title": "Meses"
+            }
+          },
+          {
+            "name": "categoria",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Categoria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/ciudadanos-activos": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Ciudadanos más participativos ($group + $lookup)",
+        "operationId": "ciudadanos_activos_api_analitica_ciudadanos_activos_get",
+        "parameters": [
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/etiquetas": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Etiquetas más frecuentes en problemas abiertos ($unwind de un array)",
+        "operationId": "etiquetas_frecuentes_api_analitica_etiquetas_get",
+        "parameters": [
+          {
+            "name": "limite",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limite"
+            }
+          },
+          {
+            "name": "solo_abiertos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Solo Abiertos"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analitica/rendimiento-estados": {
+      "get": {
+        "tags": [
+          "Analítica (Aggregation Pipeline)"
+        ],
+        "summary": "Horas promedio entre cada cambio de estado ($unwind del historial)",
+        "description": "Desanida el historial embebido y mide cuánto tarda en promedio cada etapa del flujo.",
+        "operationId": "rendimiento_estados_api_analitica_rendimiento_estados_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/salud": {
+      "get": {
+        "tags": [
+          "Sistema"
+        ],
+        "summary": "Verifica conexión con MongoDB",
+        "operationId": "salud_api_salud_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApoyoIn": {
+        "properties": {
+          "ciudadanoId": {
+            "type": "string",
+            "title": "Ciudadanoid"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ciudadanoId"
+        ],
+        "title": "ApoyoIn"
+      },
+      "AsignarInstitucion": {
+        "properties": {
+          "institucionId": {
+            "type": "string",
+            "title": "Institucionid"
+          },
+          "actor": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 2,
+            "title": "Actor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "institucionId",
+          "actor"
+        ],
+        "title": "AsignarInstitucion"
+      },
+      "CalificacionIn": {
+        "properties": {
+          "ciudadanoId": {
+            "type": "string",
+            "title": "Ciudadanoid"
+          },
+          "puntaje": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Puntaje"
+          },
+          "comentario": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comentario"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ciudadanoId",
+          "puntaje"
+        ],
+        "title": "CalificacionIn"
+      },
+      "CambioEstado": {
+        "properties": {
+          "estado": {
+            "type": "string",
+            "enum": [
+              "recibido",
+              "en_revision",
+              "asignado",
+              "en_proceso",
+              "resuelto",
+              "rechazado"
+            ],
+            "title": "Estado"
+          },
+          "comentario": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comentario"
+          },
+          "actor": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 2,
+            "title": "Actor",
+            "examples": [
+              "Operador Alcaldía SS Centro"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "estado",
+          "actor"
+        ],
+        "title": "CambioEstado"
+      },
+      "CiudadanoActualizar": {
+        "properties": {
+          "nombre": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 3
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nombre"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "telefono": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[267][0-9]{3}-[0-9]{4}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telefono"
+          },
+          "direccion": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Direccion"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "title": "CiudadanoActualizar"
+      },
+      "CiudadanoCrear": {
+        "properties": {
+          "dui": {
+            "type": "string",
+            "pattern": "^[0-9]{8}-[0-9]$",
+            "title": "Dui",
+            "examples": [
+              "04567891-2"
+            ]
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 3,
+            "title": "Nombre",
+            "examples": [
+              "Ana Lucía Martínez"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Email",
+            "examples": [
+              "ana.martinez@correo.sv"
+            ]
+          },
+          "telefono": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[267][0-9]{3}-[0-9]{4}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telefono",
+            "examples": [
+              "7123-4567"
+            ]
+          },
+          "direccion": {
+            "$ref": "#/components/schemas/Direccion"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dui",
+          "nombre",
+          "email",
+          "direccion"
+        ],
+        "title": "CiudadanoCrear"
+      },
+      "Cobertura": {
+        "properties": {
+          "nacional": {
+            "type": "boolean",
+            "title": "Nacional",
+            "default": false
+          },
+          "departamentos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Departamentos",
+            "default": []
+          },
+          "municipios": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Municipios",
+            "default": []
+          }
+        },
+        "type": "object",
+        "title": "Cobertura"
+      },
+      "Contacto": {
+        "properties": {
+          "telefono": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telefono"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          }
+        },
+        "type": "object",
+        "title": "Contacto"
+      },
+      "Direccion": {
+        "properties": {
+          "departamento": {
+            "type": "string",
+            "title": "Departamento",
+            "examples": [
+              "San Salvador"
+            ]
+          },
+          "municipio": {
+            "type": "string",
+            "title": "Municipio",
+            "examples": [
+              "San Salvador Centro"
+            ]
+          },
+          "colonia": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Colonia",
+            "examples": [
+              "Colonia Escalón"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "departamento",
+          "municipio"
+        ],
+        "title": "Direccion"
+      },
+      "EvidenciaIn": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "^https?://",
+            "title": "Url",
+            "examples": [
+              "https://storage.reporteciudadano.sv/evidencias/foto1.jpg"
+            ]
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "foto",
+              "video",
+              "documento"
+            ],
+            "title": "Tipo",
+            "default": "foto"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "EvidenciaIn"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "InstitucionActualizar": {
+        "properties": {
+          "nombre": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150,
+                "minLength": 3
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nombre"
+          },
+          "categoriasAtendidas": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "bache",
+                    "alumbrado",
+                    "basura",
+                    "agua_potable",
+                    "alcantarillado",
+                    "arbol_caido",
+                    "semaforo",
+                    "seguridad_vial",
+                    "ruido",
+                    "otro"
+                  ]
+                },
+                "type": "array",
+                "minItems": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Categoriasatendidas"
+          },
+          "cobertura": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Cobertura"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contacto": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Contacto"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "activa": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Activa"
+          }
+        },
+        "type": "object",
+        "title": "InstitucionActualizar"
+      },
+      "InstitucionCrear": {
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 2,
+            "title": "Codigo",
+            "examples": [
+              "AM-SAN-SALVADOR-CENTRO"
+            ]
+          },
+          "nombre": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 3,
+            "title": "Nombre"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "alcaldia",
+              "autonoma",
+              "ministerio",
+              "distribuidora",
+              "emergencias"
+            ],
+            "title": "Tipo"
+          },
+          "categoriasAtendidas": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "bache",
+                "alumbrado",
+                "basura",
+                "agua_potable",
+                "alcantarillado",
+                "arbol_caido",
+                "semaforo",
+                "seguridad_vial",
+                "ruido",
+                "otro"
+              ]
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Categoriasatendidas"
+          },
+          "cobertura": {
+            "$ref": "#/components/schemas/Cobertura"
+          },
+          "contacto": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Contacto"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "codigo",
+          "nombre",
+          "tipo",
+          "categoriasAtendidas",
+          "cobertura"
+        ],
+        "title": "InstitucionCrear"
+      },
+      "ReporteCrear": {
+        "properties": {
+          "ciudadanoId": {
+            "type": "string",
+            "title": "Ciudadanoid"
+          },
+          "titulo": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 5,
+            "title": "Titulo",
+            "examples": [
+              "Bache profundo frente a escuela"
+            ]
+          },
+          "descripcion": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 10,
+            "title": "Descripcion",
+            "examples": [
+              "Bache de aprox. 1 m de diámetro que obliga a los carros a invadir el otro carril."
+            ]
+          },
+          "categoria": {
+            "type": "string",
+            "enum": [
+              "bache",
+              "alumbrado",
+              "basura",
+              "agua_potable",
+              "alcantarillado",
+              "arbol_caido",
+              "semaforo",
+              "seguridad_vial",
+              "ruido",
+              "otro"
+            ],
+            "title": "Categoria"
+          },
+          "prioridad": {
+            "type": "string",
+            "enum": [
+              "baja",
+              "media",
+              "alta",
+              "critica"
+            ],
+            "title": "Prioridad",
+            "default": "media"
+          },
+          "latitud": {
+            "type": "number",
+            "maximum": 14.5,
+            "minimum": 13.1,
+            "title": "Latitud",
+            "examples": [
+              13.6989
+            ]
+          },
+          "longitud": {
+            "type": "number",
+            "maximum": -87.6,
+            "minimum": -90.2,
+            "title": "Longitud",
+            "examples": [
+              -89.1914
+            ]
+          },
+          "departamento": {
+            "type": "string",
+            "title": "Departamento",
+            "examples": [
+              "San Salvador"
+            ]
+          },
+          "municipio": {
+            "type": "string",
+            "title": "Municipio",
+            "examples": [
+              "San Salvador Centro"
+            ]
+          },
+          "referencia": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Referencia",
+            "examples": [
+              "Frente al Centro Escolar República de Chile"
+            ]
+          },
+          "etiquetas": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "title": "Etiquetas",
+            "default": [],
+            "examples": [
+              [
+                "escuela",
+                "via_principal"
+              ]
+            ]
+          },
+          "evidencias": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenciaIn"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "title": "Evidencias",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "ciudadanoId",
+          "titulo",
+          "descripcion",
+          "categoria",
+          "latitud",
+          "longitud",
+          "departamento",
+          "municipio"
+        ],
+        "title": "ReporteCrear"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
