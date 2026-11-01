@@ -136,14 +136,6 @@ scripts/
   init_db.py         # colecciones con $jsonSchema + índices (idempotente)
   seed.py            # carga de datos de prueba
 docs/
-  DISENO.md          # justificación del modelo (embeber vs referenciar, índices, patrones)
-  DEFENSA.md         # guion de exposición y preguntas: ¿por qué MongoDB y no Cassandra?
   consultas_demo.mongodb.js  # consultas para ejecutar en mongosh o Compass
   openapi.json       # especificación para importar en Postman o Insomnia
 ```
-
-## Documentación
-
-- [Diseño del modelo NoSQL](docs/DISENO.md)
-- [Guía para la defensa](docs/DEFENSA.md)
-- [Consultas de demostración en mongosh](docs/consultas_demo.mongodb.js)
